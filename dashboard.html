@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="admin_home.html" class="navbar-link">Admin</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
+                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link">Trainer Home</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="manage-users-main">
+        <h1>Dashboard</h1>
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p id="totalUsersDisplay">150</p>
+                <div class="graph-bar" style="width: 75%;"></div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Courses</h3>
+                <p>25</p>
+                <div class="graph-bar" style="width: 50%;"></div>
+            </div>
+            <div class="stat-card">
+                <h3>Completed Assignments</h3>
+                <p>320</p>
+                <div class="graph-bar" style="width: 90%;"></div>
+            </div>
+            <div class="stat-card">
+                <h3>System Health</h3>
+                <p>Good</p>
+                <div class="graph-bar" style="width: 100%; background-color: #4CAF50;"></div>
+            </div>
+        </div>
+        
+        <section class="recent-activity">
+        </section>
+        <section class="add-user-section">
+            <div class="chart-section">
+                <h2>User Type Distribution</h2>
+                <canvas id="userGrowthChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Load initial data from localStorage
+        const initialCounts = JSON.parse(localStorage.getItem('userTypeCounts')) || { students: 100, admins: 30, trainers: 20 };
+        let totalUsers = initialCounts.students + initialCounts.admins + initialCounts.trainers;
+        let activeCourses = 25;
+        let completedAssignments = 320;
+        let userTypeData = [initialCounts.students, initialCounts.admins, initialCounts.trainers]; // Students, Admins, Trainers
+
+        function updateStats() {
+            document.querySelector('.stat-card:nth-child(1) p').textContent = totalUsers;
+            document.querySelector('.stat-card:nth-child(2) p').textContent = activeCourses;
+            document.querySelector('.stat-card:nth-child(3) p').textContent = completedAssignments;
+            updateGraphBars();
+            updateChart();
+        }
+
+        function updateGraphBars() {
+            const bars = document.querySelectorAll('.graph-bar');
+            bars[0].style.width = (totalUsers / 200) * 100 + '%';
+            bars[1].style.width = (activeCourses / 50) * 100 + '%';
+            bars[2].style.width = (completedAssignments / 400) * 100 + '%';
+        }
+
+        function updateChart() {
+            if (window.userChart) {
+                window.userChart.data.datasets[0].data = userTypeData;
+                window.userChart.update();
+            }
+        }
+
+        // Initialize Chart.js
+        const ctx = document.getElementById('userGrowthChart').getContext('2d');
+        window.userChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Students', 'Admins', 'Trainers'],
+                datasets: [{
+                    label: 'User Count',
+                    data: userTypeData,
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#e71d27'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Auto-update every 30 seconds
+        setInterval(() => {
+            // Fetch updated counts from localStorage
+            const counts = JSON.parse(localStorage.getItem('userTypeCounts')) || { students: 100, admins: 30, trainers: 20 };
+            userTypeData[0] = counts.students;
+            userTypeData[1] = counts.admins;
+            userTypeData[2] = counts.trainers;
+            totalUsers = counts.students + counts.admins + counts.trainers;
+            updateStats();
+        }, 30000);
+    </script>
+</body>
+</html>

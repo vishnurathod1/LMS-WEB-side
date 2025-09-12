@@ -1,0 +1,135 @@
+/* View Trainees Page Styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin-left: 20px;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.navbar-link.active {
+    background-color: #667eea;
+    border-radius: 5px;
+}
+
+/* Adjust body padding for fixed navbar */
+.view-trainees-page {
+    padding-top: 60px;
+}
+
+.view-trainees-main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.view-trainees-main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.trainees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.trainees-table th,
+.trainees-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.trainees-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.trainees-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .view-trainees-main {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar-item {
+        margin-left: 0;
+        margin-bottom: 5px;
+    }
+
+    .navbar-link {
+        display: block;
+        padding: 10px;
+    }
+}

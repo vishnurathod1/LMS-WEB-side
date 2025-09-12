@@ -1,0 +1,96 @@
+/* Trainer Home Page Styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0;
+    padding: 0px;
+}
+
+.trainer-container {
+    background: white;
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    height: 700px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.trainer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.trainer-menu li {
+    margin-bottom: 15px;
+}
+
+.trainer-menu a {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trainer-menu a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logout-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.logout-link:hover {
+    background: #da190b;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .trainer-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .trainer-menu a {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
