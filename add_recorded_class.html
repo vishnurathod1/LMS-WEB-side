@@ -102,11 +102,20 @@
             }
 
             const recordedClasses = getRecordedClasses();
+            // Prevent duplicate entries by checking if a class with the same title and course exists
+            const duplicate = recordedClasses.some(rc => rc.title === title && rc.course === course);
+            if (duplicate) {
+                alert('This recorded class already exists for the selected course.');
+                return;
+            }
+
             recordedClasses.push({ title, description, videoUrl, course, trainer, status });
             saveRecordedClasses(recordedClasses);
             alert('Recorded class added successfully!');
             // Reset form
             document.getElementById('recorded-class-form').reset();
+            // Redirect to recorded_lecturer.html to see the new class
+            window.location.href = 'recorded_lecturer.html';
         });
 
         // Populate courses on load
