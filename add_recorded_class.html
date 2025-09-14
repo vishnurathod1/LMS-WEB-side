@@ -118,6 +118,27 @@
             window.location.href = 'recorded_lecturer.html';
         });
 
+        // Add delete button functionality on recorded_lecturer.html page
+        // This script is added here for convenience; ideally, it should be in recorded_lecturer.html
+        function addDeleteButtonListeners() {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = e.target.getAttribute('data-index');
+                    const recordedClasses = getRecordedClasses();
+                    recordedClasses.splice(index, 1);
+                    saveRecordedClasses(recordedClasses);
+                    alert('Recorded class deleted successfully!');
+                    // Refresh the page or update UI accordingly
+                    window.location.reload();
+                });
+            });
+        }
+
+        // Call the function to add delete button listeners
+        addDeleteButtonListeners();
+        });
+
         // Populate courses on load
         populateCourses();
 

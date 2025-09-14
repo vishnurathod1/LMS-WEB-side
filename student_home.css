@@ -142,6 +142,39 @@ p{
     background-color: white;
     width:860px;
     border-radius: 15px;
+}
+
+.recorded-classes-list {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 900px;
+}
+
+.recorded-class-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.recorded-class-item h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.recorded-class-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.recorded-class-item video {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 5px;
+}
     
 
 

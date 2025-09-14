@@ -25,8 +25,7 @@
             <li class="Rathod"><a href="courses_list.html" class="vishnu"> View Courses</a></li>
             <li class="Rathod"><a href="unenroll.html" class="vishnu"> Unenroll Courses</a></li>
             <li class="Rathod"><a href="live_class.html" class="vishnu"> Live Lecturer</a></li>
-            <li class="Rathod"><a href="recorded_lecturer.html" class="vishnu"> Recorded Lecturer</a></li>
-            <li class="Rathod"><a href="add_recorded_class.html" class="vishnu"> Add Recorded Class</a></li>
+            <li class="Rathod"><a href="recorded_leacture_class.html" class="vishnu"> Recorded Lecturer</a></li>
             <li class="Rathod"><a href="#" class="vishnu" >Assignments</a></li>
             <li class="Rathod"><a href="#" class="vishnu"> Grades</a></li>
             <li class="Rathod"><a href="view_report.html" class="vishnu"> View Reports</a></li>
@@ -35,6 +34,45 @@
             <li class="Rathod"><a href="student_system_updates.html" class="vishnu"> System Updates</a></li>
             <a href="login.html" class="buttanlog"> Logout</a>
         </ul>
+        <h2>Recorded Classes</h2>
+        <div class="recorded-classes-list">
+            <!-- Recorded classes will be dynamically added here -->
+        </div>
     </div>
+    <script>
+        function getRecordedClasses() {
+            const recordedClasses = localStorage.getItem('recordedClasses');
+            return recordedClasses ? JSON.parse(recordedClasses) : [];
+        }
+
+        function renderRecordedClasses() {
+            const recordedClasses = getRecordedClasses();
+            const container = document.querySelector('.recorded-classes-list');
+            container.innerHTML = '';
+
+            if (recordedClasses.length === 0) {
+                container.innerHTML = '<p>No recorded classes available.</p>';
+                return;
+            }
+
+            recordedClasses.forEach((recordedClass) => {
+                console.log("Rendering video URL:", recordedClass.videoUrl);
+                const div = document.createElement('div');
+                div.classList.add('recorded-class-item');
+                div.innerHTML = `
+                    <h3>${recordedClass.title}</h3>
+                    <p>${recordedClass.description}</p>
+                    <p><strong>Course:</strong> ${recordedClass.course}</p>
+                    <p><strong>Trainer:</strong> ${recordedClass.trainer}</p>
+                    <video controls width="600" src="${recordedClass.videoUrl}"></video>
+                    <p><strong>Status:</strong> ${recordedClass.status}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Initial render
+        renderRecordedClasses();
+    </script>
 </body>
 </html>

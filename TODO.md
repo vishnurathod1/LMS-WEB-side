@@ -1,7 +1,8 @@
-# TODO: Add Courses Duration in Months
+# TODO: Add Filtering to Courses List
 
 ## Tasks
-- [x] Update manage_courses.html: Change duration field to numeric months, label as "Duration (months)", fix data storage and display bugs
-- [x] Update courses_list.html: Make it dynamic to render courses from localStorage and display duration in months
-- [x] Update student_courses.html: Display duration in months for available and enrolled courses
-- [ ] Test the changes by running the pages and verifying duration display
+- [ ] Add categories to each course in courses_list.html
+- [ ] Add filter UI: search input, category dropdown, duration min/max, price min/max, apply button
+- [ ] Add JavaScript to filter courses based on criteria
+- [ ] Update courses_list.css for filter styles
+- [ ] Test filtering functionality
