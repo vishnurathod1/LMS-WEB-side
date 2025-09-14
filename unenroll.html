@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unenroll from Courses</title>
+    <link rel="stylesheet" href="unenroll.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="class">
+        <h1>Unenroll from Courses</h1>
+        <div id="enrolled-courses">
+            <!-- Enrolled courses will be listed here -->
+        </div>
+        <button onclick="window.location.href='courses_list.html'" class="enroll-more-btn">View Courses</button>
+        <button onclick="window.location.href='courses_list.html'" class="enroll-more-btn">Live class</button>
+        <button onclick="window.location.href='courses_list.html'" class="enroll-more-btn">Recorded class</button>
+    </div>
+   
+    <script>
+        function getEnrolledCourses() {
+            const enrolled = localStorage.getItem('enrolledCourses');
+            return enrolled ? JSON.parse(enrolled) : [];
+        }
+
+        function saveEnrolledCourses(enrolled) {
+            localStorage.setItem('enrolledCourses', JSON.stringify(enrolled));
+        }
+
+        function renderEnrolledCourses() {
+            const enrolled = getEnrolledCourses();
+            const container = document.getElementById('enrolled-courses');
+            container.innerHTML = '';
+            if (enrolled.length === 0) {
+                container.innerHTML = '<p>You are not enrolled in any courses.</p>';
+                return;
+            }
+            enrolled.forEach((course, index) => {
+                const div = document.createElement('div');
+                div.className = 'course-item';
+                div.innerHTML = `
+                    <span>${course.title} - ₹${course.price} - Duration: ${course.duration} months</span>
+                    <button class="unenroll-btn" data-index="${index}">Unenroll</button>
+                `;
+                container.appendChild(div);
+            });
+            attachUnenrollListeners();
+        }
+
+        function attachUnenrollListeners() {
+            document.querySelectorAll('.unenroll-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = e.target.getAttribute('data-index');
+                    unenrollCourse(index);
+                });
+            });
+        }
+
+        function unenrollCourse(index) {
+            const enrolled = getEnrolledCourses();
+            enrolled.splice(index, 1);
+            saveEnrolledCourses(enrolled);
+            renderEnrolledCourses();
+        }
+
+        // Initial render
+        renderEnrolledCourses();
+    </script>
+</body>
+</html>

@@ -30,7 +30,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Trainer</th>
-                    <th>time duration</th> 
+                    <th>Duration (months)</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -60,7 +60,7 @@
                     <td>${course.title}</td>
                     <td>${course.description}</td>
                     <td>${course.trainer}</td>
-                    <td>${course.time_duration}</td>
+                    <td>${course.duration} months</td>
                     <td>${course.status}</td>
                     <td>
                         <button class="edit-btn" data-index="${index}">Edit</button>
@@ -99,6 +99,10 @@
                                 <input type="text" id="title" required />
                             </div>
                             <div class="form-group">
+                                <label for="price">Price:</label>
+                                <input type="number" id="price" min="0" step="0.01" required />
+                            </div>
+                            <div class="form-group">
                                 <label for="description">Description:</label>
                                 <textarea id="description" required></textarea>
                             </div>
@@ -107,8 +111,8 @@
                                 <input type="text" id="trainer" required />
                             </div>
                             <div class="form-group">
-                                <label for="duration">Duration:</label>
-                                <input type="text" id="duration" placeholder="e.g. 3 weeks" required />
+                                <label for="duration">Duration (months):</label>
+                                <input type="number" id="duration" min="1" placeholder="e.g. 3" required />
                             </div>
                             <div class="form-group">
                                 <label for="status">Status:</label>
@@ -143,12 +147,20 @@
                                 <input type="text" id="title" value="${course.title}" required />
                             </div>
                             <div class="form-group">
+                                <label for="price">Price:</label>
+                                <input type="number" id="price" value="${course.price || ''}" min="0" step="0.01" required />
+                            </div>
+                            <div class="form-group">
                                 <label for="description">Description:</label>
                                 <textarea id="description" required>${course.description}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="trainer">Trainer:</label>
                                 <input type="text" id="trainer" value="${course.trainer}" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration (months):</label>
+                                <input type="number" id="duration" min="1" value="${course.duration || ''}" required />
                             </div>
                             <div class="form-group">
                                 <label for="status">Status:</label>
@@ -180,21 +192,22 @@
             e.preventDefault();
             const index = document.getElementById('course-index').value;
             const title = document.getElementById('title').value.trim();
+            const price = parseFloat(document.getElementById('price').value);
             const description = document.getElementById('description').value.trim();
             const trainer = document.getElementById('trainer').value.trim();
-            const duration = document.getElementById('duration').value.trim();
+            const duration = parseInt(document.getElementById('duration').value);
             const status = document.getElementById('status').value;
 
-            if (!title || !description || !trainer || !duration) {
-                alert('All fields are required.');
+            if (!title || !description || !trainer || isNaN(duration) || duration < 1 || isNaN(price)) {
+                alert('All fields are required, duration must be a positive number, and price must be a number.');
                 return;
             }
 
             const courses = getCourses();
             if (index === '-1') {
-                courses.push({ title, description, trainer, duration, status });
+                courses.push({ title, price, description, trainer, duration, status });
             } else {
-                courses[index] = { title, description, trainer, duration, status };
+                courses[index] = { title, price, description, trainer, duration, status };
             }
             saveCourses(courses);
             closeForm();

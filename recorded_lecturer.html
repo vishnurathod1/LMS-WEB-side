@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorded Lecturer</title>
+    <link rel="stylesheet" href="recorded_lecture.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="class">
+        <h1>Recorded Lecturer</h1>
+        <p>Access recorded lecture sessions.</p>
+        <div id="recorded-videos">
+            <!-- Placeholder for recorded videos -->
+            <video controls width="600">
+                <source src="recorded_lecture.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <script>
+        function checkEnrollment() {
+            const enrolled = localStorage.getItem('enrolledCourses');
+            const enrolledCourses = enrolled ? JSON.parse(enrolled) : [];
+            const videoContainer = document.getElementById('recorded-videos');
+            if (enrolledCourses.length === 0) {
+                videoContainer.innerHTML = '<p>You need to enroll in a course to access recorded lectures. <a href="courses_list.html">Enroll now</a></p>';
+            }
+        }
+        // Check on page load
+        checkEnrollment();
+    </script>
+</body>
+</html>

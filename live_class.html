@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Class</title>
+    <link rel="stylesheet" href="live_class.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="class">
+        <h1>Live Class</h1>
+        <p>Join the live lecture session.</p>
+        <div id="live-video">
+            <!-- Placeholder for live video stream -->
+            <video controls width="600">
+                <source src="live_stream.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <script>
+        function checkEnrollment() {
+            const enrolled = localStorage.getItem('enrolledCourses');
+            const enrolledCourses = enrolled ? JSON.parse(enrolled) : [];
+            const videoContainer = document.getElementById('live-video');
+            if (enrolledCourses.length === 0) {
+                videoContainer.innerHTML = '<p>You need to enroll in a course to access live classes. <a href="courses_list.html">Enroll now</a></p>';
+            }
+        }
+        // Check on page load
+        checkEnrollment();
+    </script>
+</body>
+</html>
