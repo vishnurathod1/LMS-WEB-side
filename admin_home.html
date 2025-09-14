@@ -6,8 +6,26 @@
     <title>Admin Page</title>
     <link rel="stylesheet" href="styles.css" />
 </head>
+<style>
+    .admin-header{
+        background: linear-gradient(135deg, #6ad860 0%, #764ba2 100%);
+        color: white;
+        padding: 10px 0;
+        text-align: left;
+       
+    }
+    .h11{
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        font-style: italic;
+    }
+</style>
 <body class="admin-page">
-    <nav class="navbar">
+    <div class="admin-header">
+        <h1 class="h11">Wellcome to the Admin Page</h1>
+     <nav class="navbar">
         <div class="navbar-container">
             <a href="home.html" class="navbar-brand">LMS Project</a>
             <ul class="navbar-menu">
@@ -20,8 +38,8 @@
                 <li class="navbar-item"><a href="security_settings.html" class="navbar-link">Security Settings</a></li>
             </ul>
         </div>
-    </nav>
-    <main class="admin-main">
+     </nav>
+     <main class="admin-main">
         <h1>Admin Dashboard</h1>
         <section class="admin-features">
             <h2>Administrative Features</h2>
@@ -33,18 +51,19 @@
                 <li><a href="user_roles.html">User Roles</a></li>
                 <li><a href="notifications.html">Notifications</a></li>
                 <li><a href="activity_monitoring.html">Activity Monitoring</a></li>
-                <li><a href="#">Feedback</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
                 <li><a href="security_settings.html">Security Settings</a></li>
                 <li><a href="performance_metrics.html">Performance Metrics</a></li>
                 <li><a href="admin_complaints.html">Compliance</a></li>
                 <li><a href="system_updates.html">System Updates</a></li>
             </ul>
             
+    </div>
         </section>
 
         
 
-    </main>
+      </main>
 
 </body>
 </html>
