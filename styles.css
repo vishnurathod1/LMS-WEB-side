@@ -9,7 +9,6 @@ body {
     font-family: 'Arial', sans-serif;
    
  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100px;
     display: flex;
      justify-content: center;
     align-items: center; 
@@ -717,6 +716,7 @@ textarea {
     justify-content: space-around;
     margin-bottom: 30px;
     flex-wrap: wrap;
+    display: flex;
 }
 
 .stat-card {
@@ -768,6 +768,7 @@ textarea {
     background-color: #667eea;
     border-radius: 5px;
     margin-top: 10px;
+    desplay: flex;
 }
 
 .chart-section {

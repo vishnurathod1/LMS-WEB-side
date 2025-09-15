@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin Page</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+      
+    />
 </head>
 <style>
     .admin-header{
@@ -21,21 +26,30 @@
         color: white;
         font-style: italic;
     }
+    .search-bar{
+            margin-right: 20px;
+            width: 300px;
+
+        }
 </style>
 <body class="admin-page">
     <div class="admin-header">
         <h1 class="h11">Wellcome to the Admin Page</h1>
      <nav class="navbar">
         <div class="navbar-container">
-            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <a href="home.html" class="navbar-brand">📚 LMS Project</a>
             <ul class="navbar-menu">
-                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
-                <li class="navbar-item"><a href="admin.html" class="navbar-link active">Admin</a></li>
-                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
-                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link">Trainer Home</a></li>
-                <li class="navbar-item"><a href="login.html" class="navbar-link">Login</a></li>
-                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
-                <li class="navbar-item"><a href="security_settings.html" class="navbar-link">Security Settings</a></li>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search features..." onkeyup="filterFeatures()" />
+                </div>
+                <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fa fa-home"></i> Home</a></li>
+                <li class="navbar-item"><a href="admin.html" class="navbar-link active"><i class="fa fa-user-tie"></i> Admin</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fa fa-user-graduate"></i> Student </a></li>
+                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fa fa-chalkboard-teacher"></i> Trainer</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-lock"></i> Login</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+                <li class="navbar-item"><a href="security_settings.html" class="navbar-link"><i class="fa fa-shield-alt"></i> Settings</a></li>
+                
             </ul>
         </div>
      </nav>
@@ -43,27 +57,45 @@
         <h1>Admin Dashboard</h1>
         <section class="admin-features">
             <h2>Administrative Features</h2>
-            <ul>
-                <li><a href="manage_users.html">Manage Users</a></li>
-                <li><a href="view_report.html">View Reports</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="system_settings.html">System Settings</a></li>
-                <li><a href="user_roles.html">User Roles</a></li>
-                <li><a href="notifications.html">Notifications</a></li>
-                <li><a href="activity_monitoring.html">Activity Monitoring</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-                <li><a href="security_settings.html">Security Settings</a></li>
-                <li><a href="performance_metrics.html">Performance Metrics</a></li>
-                <li><a href="admin_complaints.html">Compliance</a></li>
-                <li><a href="system_updates.html">System Updates</a></li>
+            
+            <ul id="featuresList">
+                <li><a href="manage_users.html"><i class="fa fa-users"></i> Manage Users</a></li>
+                <li><a href="view_report.html"><i class="fa fa-file-alt"></i> View Reports</a></li>
+                <li><a href="dashboard.html"><i class="fa fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="system_settings.html"><i class="fa fa-cogs"></i> System Settings</a></li>
+                <li><a href="user_roles.html"><i class="fa fa-key"></i> User Roles</a></li>
+                <li><a href="notifications.html"><i class="fa fa-bell"></i> Notifications</a></li>
+                <li><a href="activity_monitoring.html"><i class="fa fa-chart-line"></i> Activity Monitoring</a></li>
+                <li><a href="feedback.html"><i class="fa fa-comments"></i> Feedback</a></li>
+                <li><a href="security_settings.html"><i class="fa fa-lock"></i> Security Settings</a></li>
+                <li><a href="performance_metrics.html"><i class="fa fa-trophy"></i> Performance Metrics</a></li>
+                <li><a href="admin_complaints.html"><i class="fa fa-check-circle"></i> Compliance</a></li>
+                <li><a href="system_updates.html"><i class="fa fa-sync-alt"></i> System Updates</a></li>
+                <li><a href="contact.html"><i class="fa fa-envelope"></i> Contact</a></li>
+                <li><a href="about.html"><i class="fa fa-info-circle"></i> About</a></li>
+                
             </ul>
             
     </div>
         </section>
-
+        <script>
+            function filterFeatures() {
+                const input = document.getElementById('searchInput');
+                const filter = input.value.toLowerCase();
+                const ul = document.getElementById('featuresList');
+                const li = ul.getElementsByTagName('li');
+                for (let i = 0; i < li.length; i++) {
+                    const a = li[i].getElementsByTagName('a')[0];
+                    const textValue = a.textContent || a.innerText;
+                    if (textValue.toLowerCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
         
-
       </main>
-
 </body>
 </html>
