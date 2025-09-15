@@ -214,7 +214,8 @@ body {
 .admin-main {
     width: 400px;
     height: auto;
-    padding: 20px;
+    padding: 50px;
+    margin: 2;
     color: white;
     background: #333;
     border-radius: 25px;
@@ -325,7 +326,7 @@ color: white;
 
 .manage-users-main {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
     background: white;
     border-radius: 10px;
@@ -388,7 +389,7 @@ color: white;
     padding: 30px;
     border-radius: 8px;
     max-width: 600px;
-    margin: 0 ;
+    margin: 0px ;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -453,7 +454,7 @@ textarea {
     padding: 30px;
     border-radius: 8px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -628,7 +629,7 @@ textarea {
 
 .manage-courses-main {
     width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
     background: white;
     border-radius: 10px;

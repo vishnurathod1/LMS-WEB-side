@@ -69,10 +69,13 @@ body {
 
 /* Main content */
 .updates-main {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 500px;
+    margin: 0;
     padding: 20px;
+    color: white;
+    background-color: #666;
 }
+
 
 .updates-main h1 {
     text-align: center;
@@ -92,6 +95,7 @@ label {
     margin-bottom: 5px;
     color: #555;
     font-weight: 500;
+       color: white;
 }
 
 input[type="text"],
@@ -103,6 +107,7 @@ select {
     border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.3s ease;
+ 
 }
 
 input[type="text"]:focus,
@@ -111,10 +116,11 @@ select:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    
 }
 
 .submit-btn {
-    width: 100%;
+    width: 50%;
     padding: 15px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -196,4 +202,13 @@ select:focus {
         display: block;
         padding: 10px;
     }
+}
+.back-link{
+    color: rgb(193, 168, 238);
+    border: 1px solid white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+
 }

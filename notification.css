@@ -1,19 +1,81 @@
-/* Styles for system settings page */
+.notifications-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f4f6f8;
+    padding: 20px;
+}
+
+.notifications-main {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0px ;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.notifications-main h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    font-family: 'Arial', sans-serif;
+}
+
+.sent-notifications {
+    margin-top: 30px;
+}
+
+.sent-notifications h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#notifications-list {
+    list-style: none;
+    padding: 0;
+}
+
+#notifications-list li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #667eea;
+}
+
+#notifications-list li strong {
+    color: #333;
+}
+
+#notifications-list li p {
+    margin: 5px 0 0 0;
+    color: #666;
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+ body {
     font-family: 'Arial', sans-serif;
    
- background: linear-gradient(135deg, #e7e9f1 0%, #cfbae4 100%);
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
      justify-content: left;
     align-items: left; 
-    padding: 10px;
-}
+    padding: 0px;
+ }
 
 .container {
     background: white;
@@ -22,8 +84,8 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-}
-.class{
+} */
+ .class{
     background: white;
     padding: 40px;
     border-radius: 10px;
@@ -89,16 +151,19 @@ input[type="password"]:focus {
 }
 
 .submit-btn {
-    width: 100%;
+    width:150px;
+    height: 60px;
     padding: 15px;
+    margin: 10px;
     background: linear-gradient(135deg, #e71d27 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
 }
 
 .submit-btn:hover {
@@ -110,6 +175,9 @@ input[type="password"]:focus {
     transform: translateY(0);
 }
 
+
+
+/* Navbar styles */
 .navbar {
     background-color: #333;
     padding: 10px 0;
@@ -143,7 +211,8 @@ input[type="password"]:focus {
 }
 
 .navbar-item {
-    margin-left: 20px;
+    margin-left: 30px;
+    justify-content: space-between;
 }
 
 .navbar-link {
@@ -151,6 +220,8 @@ input[type="password"]:focus {
     text-decoration: none;
     padding: 10px 15px;
     transition: background-color 0.3s ease;
+    justify-content: space-between;
+    display: flex;
 }
 
 .navbar-link:hover {
@@ -162,53 +233,5 @@ input[type="password"]:focus {
     background-color: #667eea;
     border-radius: 5px;
 }
-.system-settings-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #f4f6f8;
-    padding: 20px;
-}
 
-.system-settings-main {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 ;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-} 
-
- .system-settings-main h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
-}
-
-.form-group label {
-    font-weight: 600;
-    margin-bottom: 9px;
-    display: block;
-    color: #555;
-} 
-
-.checkbox-group {
-    margin-bottom: 15px;
-}
-
-.checkbox-group label {
-    font-weight: normal;
-    color: #555;
-}
-#email-notifications{
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color:black;
-    
-}
-#privacy-settings{
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color:black;
-    
-}
+/* Adjust body padding for fixed navbar */

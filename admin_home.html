@@ -6,10 +6,8 @@
     <title>Admin Page</title>
     <link rel="stylesheet" href="styles.css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-      
-    />
+      rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+        
 </head>
 <style>
     .admin-header{
@@ -40,13 +38,25 @@
     .notification-icon:hover {
         color: #ddd;
     }
+    .head{
+        font-size:30px;
+        font-weight: bold;
+        color: white;
+        margin-left: 20px;
+        justify-content: left;
+        font-style: italic;
+        text-align: left;
+      padding-right: 15px;
+      margin-button: 30px;
+
+    }
 </style>
 <body class="admin-page">
     <div class="admin-header">
-        <h1 class="h11">Wellcome to the Admin Page</h1>
+        <!-- <h1 class="h11">Wellcome to the Admin Page</h1> -->
      <nav class="navbar">
         <div class="navbar-container">
-            <a href="home.html" class="navbar-brand">📚 LMS Project</a>
+            <h1 class="head"> LMS Project</h1>
             <ul class="navbar-menu">
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Search features..." onkeyup="filterFeatures()" />
@@ -62,7 +72,10 @@
                 
             </ul>
         </div>
-     </nav>
+     </nav>x`
+     <hr>
+     <br>
+     <hr>
      <main class="admin-main">
         <h1>Admin Dashboard</h1>
         <section class="admin-features">
