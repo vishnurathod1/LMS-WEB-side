@@ -20,7 +20,7 @@
        
     }
     .h11{
-        text-align: center;
+        text-align: left;
         font-size: 50px;
         font-weight: bold;
         color: white;
@@ -31,6 +31,15 @@
             width: 300px;
 
         }
+    .notification-icon {
+        margin-left: 20px;
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+    }
+    .notification-icon:hover {
+        color: #ddd;
+    }
 </style>
 <body class="admin-page">
     <div class="admin-header">
@@ -42,8 +51,9 @@
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Search features..." onkeyup="filterFeatures()" />
                 </div>
+                <a href="notifications.html" class="notification-icon"><i class="fa fa-bell"></i></a>
                 <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fa fa-home"></i> Home</a></li>
-                <li class="navbar-item"><a href="admin.html" class="navbar-link active"><i class="fa fa-user-tie"></i> Admin</a></li>
+                <li class="navbar-item"><a href="admin.html" class="navbar-link"><i class="fa fa-user-tie"></i> Admin</a></li>
                 <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fa fa-user-graduate"></i> Student </a></li>
                 <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fa fa-chalkboard-teacher"></i> Trainer</a></li>
                 <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-lock"></i> Login</a></li>

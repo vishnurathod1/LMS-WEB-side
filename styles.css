@@ -171,7 +171,8 @@ input[type="password"]:focus {
 }
 
 .navbar-item {
-    margin-left: 20px;
+    margin-left: 30px;
+    justify-content: space-between;
 }
 
 .navbar-link {
@@ -179,6 +180,8 @@ input[type="password"]:focus {
     text-decoration: none;
     padding: 10px 15px;
     transition: background-color 0.3s ease;
+    justify-content: space-between;
+    display: flex;
 }
 
 .navbar-link:hover {
