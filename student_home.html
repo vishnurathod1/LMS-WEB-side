@@ -27,7 +27,7 @@
             <li class="Rathod"><a href="unenroll.html" class="vishnu"> Unenroll Courses</a></li>
             <li class="Rathod"><a href="live_class.html" class="vishnu"> Live Lecturer</a></li>
             <li class="Rathod"><a href="recorded_leacture_class.html" class="vishnu"> Recorded Lecturer</a></li>
-            <li class="Rathod"><a href="#" class="vishnu" >Assignments</a></li>
+            <li class="Rathod"><a href="student_assignments.html" class="vishnu" >Assignments</a></li>
             <li class="Rathod"><a href="#" class="vishnu"> Grades</a></li>
             <li class="Rathod"><a href="view_report.html" class="vishnu"> View Reports</a></li>
             <li class="Rathod"><a href="performance_metrics.html" class="vishnu"> Performance Metrics</a></li>
@@ -35,12 +35,12 @@
             <li class="Rathod"><a href="student_system_updates.html" class="vishnu"> System Updates</a></li>
             <a href="login.html" class="buttanlog"> Logout</a>
         </ul>
-        <h2>Recorded Classes</h2>
+        <!-- <h2>Recorded Classes</h2>
         <div class="recorded-classes-list">
             <!-- Recorded classes will be dynamically added here -->
-        </div>
+        <!-- </div> --> -->
     </div>
-    <script>
+    <!-- <script>
         function getRecordedClasses() {
             const recordedClasses = localStorage.getItem('recordedClasses');
             return recordedClasses ? JSON.parse(recordedClasses) : [];
@@ -70,7 +70,7 @@
                 `;
                 container.appendChild(div);
             });
-        }
+        } -->
 
         // Initial render
         renderRecordedClasses();

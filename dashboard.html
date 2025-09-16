@@ -86,10 +86,6 @@
                     <canvas id="polarAreaChart"></canvas>
                 </div>
                 <div class="chart-card">
-                    <h3>User Engagement (Bubble Chart)</h3>
-                    <canvas id="bubbleChart"></canvas>
-                </div>
-                <div class="chart-card">
                     <h3>Course Ratings (Scatter Chart)</h3>
                     <canvas id="scatterChart"></canvas>
                 </div>
@@ -318,35 +314,6 @@
             }
         });
 
-        // Bubble chart
-        const bubbleCtx = document.getElementById('bubbleChart').getContext('2d');
-        const bubbleChart = new Chart(bubbleCtx, {
-            type: 'bubble',
-            data: {
-                datasets: [{
-                    label: 'User Engagement',
-                    data: [
-                        {x: 20, y: 30, r: 15},
-                        {x: 40, y: 10, r: 10},
-                        {x: 25, y: 20, r: 12},
-                        {x: 35, y: 25, r: 8}
-                    ],
-                    backgroundColor: 'rgb(255, 99, 132)'
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
         // Scatter chart
         const scatterCtx = document.getElementById('scatterChart').getContext('2d');
         const scatterChart = new Chart(scatterCtx, {
@@ -371,7 +338,7 @@
                         type: 'linear',
                         position: 'bottom',
                         min: 0,
-                        max: 6
+                        max: 5
                     },
                     y: {
                         beginAtZero: true,
