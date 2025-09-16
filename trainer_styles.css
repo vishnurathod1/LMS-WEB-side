@@ -1,3 +1,90 @@
+/* Notification badge styles */
+.notification-badge {
+    background-color: #e71d27;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-block;
+    min-width: 18px;
+    text-align: center;
+    line-height: 1;
+}
+
+/* Positioning for notification icon */
+.navbar-item {
+    position: relative;
+}
+
+.trainer-container {
+    background: white;
+    padding: 0px;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin-left: 30px;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.navbar-link.logout-link {
+    background-color: #e71d27;
+    border-radius: 5px;
+}
+
+.navbar-link.logout-link:hover {
+    background-color: #c41c1c;
+}
+
 /* Trainer Home Page Styles */
 
 body {
@@ -6,20 +93,20 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: left;
     margin: 0;
     padding: 0px;
 }
 
 .trainer-container {
     background: white;
-    padding: 0px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-    height: 700px;
-    text-align: center;
+    height: 900px;
+    text-align: left;
 }
 
 h1 {
@@ -39,6 +126,12 @@ p {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 15px;
+    margin-top: 20px;
+    height: 800px;
 }
 
 .trainer-menu li {
@@ -53,27 +146,35 @@ p {
     text-decoration: none;
     border-radius: 5px;
     font-size: 1.1em;
-    font-weight: 500;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 20px;
+   
 }
 
 .trainer-menu a:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: rgb(224, 199, 199);
+    color:black
+}
+.trainer-menu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f7e4e4;
 }
 
 .logout-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
-    background: #f44336;
+    display: flex;
+    width: 20%;
+    padding: 10px 15px;
+   justify-content: center; 
+    background: #e6bab7;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1em;
     transition: background-color 0.3s ease;
 }
-
 .logout-link:hover {
     background: #da190b;
 }
