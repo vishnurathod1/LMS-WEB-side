@@ -30,11 +30,11 @@
                     <input type="radio" id="admin" name="userType" value="admin" required>
                     <label for="admin">Admin</label>
                     
-                    <input type="radio" id="teacher" name="userType" value="teacher">
-                    <label for="teacher">Trainer</label>
+                    <input type="radio" id="trainer" name="userType" value="trainer">
+                    <label for="trainer">Trainer</label>
                     
-                    <input type="radio" id="student" name="userType" value="student">
-                    <label for="student">Student</label>
+                    <input type="radio" id="trainee" name="userType" value="trainee">
+                    <label for="trainee">Trainee</label>
                 </div>
             </div>
             
@@ -78,9 +78,9 @@
             // Redirect based on user type
             if (userType === 'admin') {
                 window.location.href = 'admin_home.html';
-            } else if (userType === 'teacher') {
+            } else if (userType === 'trainer') {
                 window.location.href = 'trainer_home.html';
-            } else if (userType === 'student') {
+            } else if (userType === 'trainee') {
                 window.location.href = 'student_home.html';
             }
         });
