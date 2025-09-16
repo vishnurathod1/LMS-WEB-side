@@ -38,6 +38,15 @@
     .notification-icon:hover {
         color: #ddd;
     }
+    .profile-icon {
+        margin-left: 20px;
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+    }
+    .profile-icon:hover {
+        color: #ddd;
+    }
     .head{
         font-size:30px;
         font-weight: bold;
@@ -63,14 +72,12 @@
                 </div>
                 <a href="notifications.html" class="notification-icon"><i class="fa fa-bell"></i></a>
                 <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fa fa-home"></i> Home</a></li>
-                <li class="navbar-item"><a href="admin.html" class="navbar-link"><i class="fa fa-user-tie"></i> Admin</a></li>
                 <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fa fa-user-graduate"></i> Student </a></li>
                 <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fa fa-chalkboard-teacher"></i> Trainer</a></li>
-                <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-lock"></i> Login</a></li>
                 <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
                 <li class="navbar-item"><a href="security_settings.html" class="navbar-link"><i class="fa fa-shield-alt"></i> Settings</a></li>
+                <li class="navbar-item"><a href="admin_profile.html" class="navbar-link"><i class="fa fa-user-circle"></i>Admin</a></li>
                 
-            </ul>
         </div>
      </nav>x`
      <hr>
@@ -118,7 +125,19 @@
                 }
             }
         </script>
-        
+        <script>
+            // Optional: Add JavaScript to handle profile icon click if needed
+            document.addEventListener('DOMContentLoaded', function() {
+                const profileIcon = document.querySelector('.profile-icon');
+                if (profileIcon) {
+                    profileIcon.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        // Navigate to admin_profile.html
+                        window.location.href = 'admin_profile.html';
+                    });
+                }
+            });
+        </script>
       </main>
 </body>
 </html>
