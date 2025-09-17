@@ -2,8 +2,8 @@
 
 .admin-page {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+    color: black;
     margin: 0;
     padding: 0;
 }

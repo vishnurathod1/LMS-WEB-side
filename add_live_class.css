@@ -2,7 +2,7 @@
 
 body.add-live-class-page {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -71,16 +71,7 @@ body.add-live-class-page {
 
 .add-live-class-main {
     margin-top: 10px; /* To avoid navbar overlap */
-    background: rgb(255, 255, 255);
-    max-width: 600px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border:2 solid #ddd;
-}
-.add-recorded-class-main{
-    margin-top: 80px; /* To avoid navbar overlap */
-    background: rgb(255, 255, 255);
+    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);background: rgb(255, 255, 255);
     max-width: 600px;
     padding: 30px;
     border-radius: 10px;
@@ -88,10 +79,11 @@ body.add-live-class-page {
     border:2 solid #ddd;
 }
 
+
 h1 {
     text-align: center;
     margin-bottom: 25px;
-    color: #333;
+    color: #050101;
 }
 
 .form-group {

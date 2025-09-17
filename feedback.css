@@ -1,5 +1,5 @@
 .feedback-page{
-    background-color: antiquewhite;
+   background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     min-height: 100vh;
     margin: 10px,0px,2px;
     color: white,black;
@@ -12,7 +12,7 @@
     align-items: center;
     background-color: #222020;
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
 
 }
 .navbar-menu{
@@ -48,7 +48,7 @@
     font-size: 20px;
     border: 2px solid black;
     width: 400px;
-    background-color: #667eea;
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     height: 900px;
 }
 .form-group{
@@ -116,14 +116,13 @@ height: 40px;
     margin-bottom: 10px;
     color: black;}
 
-submitted-feedback{
+.submitted-feedback{
     color: black;
     font-size: 20px;
     background-color: white;
     border: 2px solid black;
-    width: 400px;
-    padding: 20px;
-    margin: 20px;
+    width: 330px;
+    
 }
 .submit-btn{
     width:150px;
