@@ -8,7 +8,7 @@
 body {
     font-family: 'Arial', sans-serif;
    
- background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     display: flex;
      justify-content: center;
     align-items: center; 
@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    background: white;
+    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -116,7 +116,7 @@ input[type="password"]:focus {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #666;
+    color: black;
 }
 
 .login-link a,
@@ -129,7 +129,7 @@ input[type="password"]:focus {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #666;
+    color: black;
 }
 
 .login-link a:hover,
@@ -217,7 +217,7 @@ body {
     padding: 50px;
     margin: 2;
     color: white;
-    background: #333;
+   background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     border-radius: 25px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     text-align: left;

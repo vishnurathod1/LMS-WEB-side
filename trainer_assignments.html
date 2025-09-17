@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trainer Assignments</title>
+    <link rel="stylesheet" href="trainer assig.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
+                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link">Trainer Home</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="content">
+        <h1>Create New Assignment</h1>
+        <form id="assignment-form">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" required />
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" required />
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <select id="course" required>
+                    <option value="">Select Course</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Create Assignment</button>
+        </form>
+    </main>
+    <script>
+        function getCourses() {
+            const courses = localStorage.getItem('courses');
+            return courses ? JSON.parse(courses) : [];
+        }
+
+        function getAssignments() {
+            const assignments = localStorage.getItem('assignments');
+            return assignments ? JSON.parse(assignments) : [];
+        }
+
+        function saveAssignments(assignments) {
+            localStorage.setItem('assignments', JSON.stringify(assignments));
+        }
+
+        function populateCourses() {
+            const courses = getCourses();
+            const courseSelect = document.getElementById('course');
+            courses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.title;
+                option.textContent = course.title;
+                courseSelect.appendChild(option);
+            });
+        }
+
+        document.getElementById('assignment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('title').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const dueDate = document.getElementById('due-date').value;
+            const course = document.getElementById('course').value;
+            const status = document.getElementById('status').value;
+
+            if (!title || !description || !dueDate || !course) {
+                alert('All fields are required.');
+                return;
+            }
+
+            const assignments = getAssignments();
+            // Prevent duplicate entries by checking if an assignment with the same title and course exists
+            const duplicate = assignments.some(assignment => assignment.title === title && assignment.course === course);
+            if (duplicate) {
+                alert('This assignment already exists for the selected course.');
+                return;
+            }
+
+            assignments.push({ title, description, dueDate, course, status });
+            saveAssignments(assignments);
+            alert('Assignment created successfully!');
+            // Reset form
+            document.getElementById('assignment-form').reset();
+        });
+
+        // Populate courses on load
+        populateCourses();
+    </script>
+</body>
+</html>

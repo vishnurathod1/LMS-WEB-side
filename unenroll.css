@@ -17,8 +17,7 @@ body {
 }
 
 .class {
-    background: rgb(228, 209, 209);
-    padding: 50px;
+    background: rgb(228, 209, 209);background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white); padding: 50px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     width: 600px;

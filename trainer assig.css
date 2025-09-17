@@ -1,0 +1,88 @@
+.navbar{
+    display: flex;
+    background-color: rgb(104, 96, 96);
+    height: 60px;
+}
+.navbar-menu{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    
+  
+
+}
+.navbar-link{
+    display: block;
+    color: white;
+   text-decoration: none;
+}
+.navbar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+   text-decoration: none;
+   color: rgb(104, 96, 96);
+
+  
+}
+.navbar-item{
+    margin-left: 90px;
+ 
+}
+.navbar-brand{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+.content{
+    background:linear-gradient(45deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet);
+    height: 900px;
+    width: 30%;
+    border: 2px solid black;
+    justify-content: left;
+    text-align: left;
+}
+h1{
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    width: 100%;
+     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+     font-weight: bold;
+}
+#assignment-form{
+        text-decoration: none;
+        margin-left: 20px;
+       
+        justify-content: left;
+        text-align: left;
+}
+.form-group{
+    margin: 50px;
+    color: black;
+    font-size: x-large;
+    
+    
+}
+#title{
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+
+    
+}
+label{
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+
+}
+#description{
+    width: 350px;
+    height: 250px;
+    border-radius:10px;
+    
+
+}
