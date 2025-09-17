@@ -321,17 +321,18 @@ color: white;
     padding: 60px 20px 20px;
     min-height: 100vh;
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
 }
 
 .manage-users-main {
     max-width: 1200px;
     margin: 0;
     padding: 20px;
-    background: white;
+   background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(122, 107, 107, 0.1);
-    color: #333;
+    color: black;
+    font-weight: bold;
 }
 
 
