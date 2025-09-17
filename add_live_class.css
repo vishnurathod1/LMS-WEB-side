@@ -71,7 +71,7 @@ body.add-live-class-page {
 
 .add-live-class-main {
     margin-top: 10px; /* To avoid navbar overlap */
-    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);background: rgb(255, 255, 255);
+    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,white);background: rgb(255, 255, 255);
     max-width: 600px;
     padding: 30px;
     border-radius: 10px;
@@ -79,6 +79,22 @@ body.add-live-class-page {
     border:2 solid #ddd;
 }
 
+.recorded-lecture-class-main {
+    margin-top: 10px; /* To avoid navbar overlap */
+    max-width: 600%px;
+   
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border:2 solid #ddd;
+}
+#recorded-class-form{
+    width: 500px;
+    border: 2px solid black;
+    
+    
+    
+}
 
 h1 {
     text-align: center;
@@ -88,6 +104,8 @@ h1 {
 
 .form-group {
     margin-bottom: 20px;
+    width: 300px;
+    
 }
 
 label {
