@@ -32,6 +32,7 @@
             <li class="Rathod"><a href="live_class.html" class="vishnu"> Live Lecturer</a></li>
             <li class="Rathod"><a href="recorded_leacture_class.html" class="vishnu"> Recorded Lecturer</a></li>
             <li class="Rathod"><a href="student_assignments.html" class="vishnu" >Assignments</a></li>
+            <li class="Rathod"><a href="attendance.html" class="vishnu"> Attendance</a></li>
             <li class="Rathod"><a href="#" class="vishnu"> Grades</a></li>
             <li class="Rathod"><a href="view_report.html" class="vishnu"> View Reports</a></li>
             <li class="Rathod"><a href="performance_metrics.html" class="vishnu"> Performance Metrics</a></li>
@@ -39,11 +40,39 @@
             <li class="Rathod"><a href="student_system_updates.html" class="vishnu"> System Updates</a></li>
             <a href="login.html" class="buttanlog"> Logout</a>
         </ul>
+
+        <h2>Student Attendance</h2>
+        <div id="studentAttendance">
+            <!-- Attendance records will be displayed here -->
+        </div>
+
         <!-- <h2>Recorded Classes</h2>
         <div class="recorded-classes-list">
             <!-- Recorded classes will be dynamically added here -->
         <!-- </div> --> -->
     </div>
+
+    <script>
+        function loadStudentAttendance() {
+            const attendance = JSON.parse(localStorage.getItem('attendance')) || [];
+            const studentAttendance = attendance.filter(record => record.userType === 'student');
+            const container = document.getElementById('studentAttendance');
+
+            if (studentAttendance.length === 0) {
+                container.innerHTML = '<p>No attendance records found.</p>';
+                return;
+            }
+
+            let html = '<table><thead><tr><th>User Name</th><th>Date</th><th>Status</th></tr></thead><tbody>';
+            studentAttendance.forEach(record => {
+                html += `<tr><td>${record.userName}</td><td>${record.date}</td><td>${record.status}</td></tr>`;
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        loadStudentAttendance();
+    </script>
     <!-- <script>
         function getRecordedClasses() {
             const recordedClasses = localStorage.getItem('recordedClasses');

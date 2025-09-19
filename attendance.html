@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management</title>
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">📚 LMS Project</a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="navbar-item"><a href="admin_home.html" class="navbar-link"><i class="fas fa-user-shield"></i> Admin</a></li>
+                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fas fa-chalkboard-teacher"></i> Trainer</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fas fa-graduation-cap"></i> Student</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Attendance Management</h1>
+
+        <div class="form-section">
+            <h2>Add Attendance</h2>
+            <form id="attendanceForm">
+                <label for="userType">User Type:</label>
+                <select id="userType" required>
+                    <option value="student">Student</option>
+                    <option value="trainer">Trainer</option>
+                </select>
+
+                <label for="userName">User Name:</label>
+                <input type="text" id="userName" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                </select>
+
+                <button type="submit">Add Attendance</button>
+            </form>
+        </div>
+
+        <div class="table-section">
+            <h2>Attendance Records</h2>
+            <table id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th>User Type</th>
+                        <th>User Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Records will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Load attendance records from localStorage
+        function loadAttendance() {
+            const attendance = JSON.parse(localStorage.getItem('attendance')) || [];
+            const tbody = document.querySelector('#attendanceTable tbody');
+            tbody.innerHTML = '';
+
+            attendance.forEach((record, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.userType}</td>
+                    <td>${record.userName}</td>
+                    <td>${record.date}</td>
+                    <td>${record.status}</td>
+                    <td>
+                        <button onclick="editRecord(${index})">Edit</button>
+                        <button onclick="deleteRecord(${index})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Add new attendance record
+        document.getElementById('attendanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userType = document.getElementById('userType').value;
+            const userName = document.getElementById('userName').value;
+            const date = document.getElementById('date').value;
+            const status = document.getElementById('status').value;
+
+            const attendance = JSON.parse(localStorage.getItem('attendance')) || [];
+            attendance.push({ userType, userName, date, status });
+            localStorage.setItem('attendance', JSON.stringify(attendance));
+
+            loadAttendance();
+            this.reset();
+        });
+
+        // Edit record
+        function editRecord(index) {
+            const attendance = JSON.parse(localStorage.getItem('attendance')) || [];
+            const record = attendance[index];
+
+            document.getElementById('userType').value = record.userType;
+            document.getElementById('userName').value = record.userName;
+            document.getElementById('date').value = record.date;
+            document.getElementById('status').value = record.status;
+
+            // Remove the old record
+            attendance.splice(index, 1);
+            localStorage.setItem('attendance', JSON.stringify(attendance));
+            loadAttendance();
+        }
+
+        // Delete record
+        function deleteRecord(index) {
+            const attendance = JSON.parse(localStorage.getItem('attendance')) || [];
+            attendance.splice(index, 1);
+            localStorage.setItem('attendance', JSON.stringify(attendance));
+            loadAttendance();
+        }
+        // Initial load
+        loadAttendance();
+    </script>
+
+
+
+
+
+

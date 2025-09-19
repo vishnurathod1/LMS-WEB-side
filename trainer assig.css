@@ -47,7 +47,7 @@ body{
 .content{
     background:linear-gradient(47deg, #667eea, #764ba2,red, orange, yellow, green, blue,  violet,white, grey, brown, pink);
     height: 1000px;
-    width: 30%;
+    width: 40%;
     border: 2px solid black;
     justify-content: left;
     text-align: left;
