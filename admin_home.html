@@ -70,6 +70,9 @@
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Search features..." onkeyup="filterFeatures()" />
                 </div>
+                <div>
+                   <button id="mode">Dark Mode</button>
+                </div>
                 <a href="notifications.html" class="notification-icon"><i class="fa fa-bell"></i></a>
                 <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fa fa-home"></i> Home</a></li>
                 <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fa fa-user-graduate"></i> Student </a></li>
@@ -77,7 +80,7 @@
                 <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
                 <li class="navbar-item"><a href="security_settings.html" class="navbar-link"><i class="fa fa-shield-alt"></i> Settings</a></li>
                 <li class="navbar-item"><a href="admin_profile.html" class="navbar-link"><i class="fa fa-user-circle"></i>Admin</a></li>
-                <li class="navbar-item"><button id="dark-mode-toggle">Dark Mode</button></li>
+                
                
         </div>
      </nav>`
@@ -141,31 +144,9 @@
                 }
             });
         </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const toggleButton = document.getElementById('dark-mode-toggle');
-                const currentTheme = localStorage.getItem('theme');
-                if (currentTheme) {
-                    document.body.classList.add(currentTheme);
-                    if (currentTheme === 'dark-mode') {
-                        toggleButton.textContent = 'Light Mode';
-                    }
-                }
-                toggleButton.addEventListener('click', function() {
-                    document.body.classList.toggle('dark-mode');
-                    let theme = 'light';
-                    if (document.body.classList.contains('dark-mode')) {
-                        theme = 'dark-mode';
-                        toggleButton.textContent = 'Light Mode';
-                    } else {
-                        toggleButton.textContent = 'Dark Mode';
-                       
-                    }
-                    localStorage.setItem('theme', theme);
-                });
-            });
-        </script>
+
       </main>
+      <script src="mode.js"></script>
 </body>
 </html>
  
