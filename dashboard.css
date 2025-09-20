@@ -4,7 +4,7 @@ body {
    
     padding: 0px;
     font-family: 'Arial', sans-serif;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white); 
+    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white); 
     margin: 0;
     display: flex;
     justify-content: center;
