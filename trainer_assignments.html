@@ -68,12 +68,60 @@
         function populateCourses() {
             const courses = getCourses();
             const courseSelect = document.getElementById('course');
-            courses.forEach(course => {
+
+            // Clear existing options except the first one
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+            if (courses.length === 0) {
+                console.log('No courses found in localStorage');
+                const noCoursesOption = document.createElement('option');
+                noCoursesOption.value = '';
+                noCoursesOption.textContent = 'No courses available - Please visit courses page first';
+                noCoursesOption.disabled = true;
+                courseSelect.appendChild(noCoursesOption);
+
+                // Add helpful message and button
+                const form = document.getElementById('assignment-form');
+                const helpDiv = document.createElement('div');
+                helpDiv.id = 'courses-help';
+                helpDiv.style.cssText = 'background: #e7f3ff; padding: 15px; border-radius: 5px; margin-top: 15px; border-left: 4px solid #007bff;';
+                helpDiv.innerHTML = `
+                    <h4 style="margin: 0 0 10px 0; color: #007bff;">No Courses Available</h4>
+                    <p style="margin: 0 0 10px 0;">To create assignments, you need to have courses available in the system.</p>
+                    <button type="button" onclick="window.location.href='courses_list.html'" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                        Go to Courses Page
+                    </button>
+                `;
+                form.appendChild(helpDiv);
+                return;
+            }
+
+            // Remove help message if courses are available
+            const existingHelp = document.getElementById('courses-help');
+            if (existingHelp) {
+                existingHelp.remove();
+            }
+
+            // Filter only active courses
+            const activeCourses = courses.filter(course => course.status === 'Active');
+
+            if (activeCourses.length === 0) {
+                const noActiveOption = document.createElement('option');
+                noActiveOption.value = '';
+                noActiveOption.textContent = 'No active courses available';
+                noActiveOption.disabled = true;
+                courseSelect.appendChild(noActiveOption);
+                return;
+            }
+
+            activeCourses.forEach(course => {
                 const option = document.createElement('option');
                 option.value = course.title;
-                option.textContent = course.title;
+                option.textContent = `${course.title} (₹${course.price} - ${course.duration} months)`;
                 courseSelect.appendChild(option);
             });
+
+            console.log(`Populated ${activeCourses.length} active courses in dropdown`);
         }
 
         document.getElementById('assignment-form').addEventListener('submit', (e) => {

@@ -29,7 +29,42 @@
     </nav>
         <h1>Welcome, Trainer!</h1>
         <p>You have access to training resources and management.</p>
-        <div class="access">   
+
+        <!-- Video Upload Section -->
+        <div class="video-upload-section">
+            <h2><i class="fas fa-upload"></i> Upload Video for Students</h2>
+            <form id="trainer-video-form" class="video-upload-form">
+                <div class="form-group">
+                    <label for="video-title">Video Title:</label>
+                    <input type="text" id="video-title" placeholder="Enter video title" required>
+                </div>
+                <div class="form-group">
+                    <label for="video-description">Description:</label>
+                    <textarea id="video-description" placeholder="Enter video description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="video-course">Course:</label>
+                    <select id="video-course" required>
+                        <option value="">Select Course</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="trainer-video-file">Choose Video File:</label>
+                    <input type="file" id="trainer-video-file" accept="video/*" required>
+                    <small class="file-help">Supported formats: MP4, WebM, OGV (Max size: 100MB)</small>
+                </div>
+                <div class="form-group">
+                    <label for="video-status">Status:</label>
+                    <select id="video-status" required>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="upload-btn"><i class="fas fa-cloud-upload-alt"></i> Upload Video</button>
+            </form>
+        </div>
+
+        <div class="access">
             <ul class="trainer-menu">
                 <li><a href="manage_courses.html"><i class="fas fa-book"></i> Manage Courses</a></li>
                 <li><a href="trainer_schedule.html"><i class="fas fa-calendar-alt"></i> Trainer Schedule</a></li>
@@ -43,13 +78,134 @@
                 <li><a href="trainer_attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
                 <a href="login.html" class="logout-link">Log Out</a>
             </ul>
-
         </div>
 
 
     </div>
 
-   
+    <script>
+        // Get courses from localStorage
+        function getCourses() {
+            const courses = localStorage.getItem('courses');
+            return courses ? JSON.parse(courses) : [];
+        }
+
+        // Get trainer videos from localStorage
+        function getTrainerVideos() {
+            const videos = localStorage.getItem('trainerVideos');
+            return videos ? JSON.parse(videos) : [];
+        }
+
+        // Save trainer videos to localStorage
+        function saveTrainerVideos(videos) {
+            localStorage.setItem('trainerVideos', JSON.stringify(videos));
+        }
+
+        // Populate course dropdown
+        function populateCourseDropdown() {
+            const courses = getCourses();
+            const courseSelect = document.getElementById('video-course');
+
+            // Clear existing options except the first one
+            courseSelect.innerHTML = '<option value="">Select Course</option>';
+
+            if (courses.length === 0) {
+                const noCoursesOption = document.createElement('option');
+                noCoursesOption.value = '';
+                noCoursesOption.textContent = 'No courses available - Please visit courses page first';
+                noCoursesOption.disabled = true;
+                courseSelect.appendChild(noCoursesOption);
+                return;
+            }
+
+            // Filter only active courses
+            const activeCourses = courses.filter(course => course.status === 'Active');
+
+            if (activeCourses.length === 0) {
+                const noActiveOption = document.createElement('option');
+                noActiveOption.value = '';
+                noActiveOption.textContent = 'No active courses available';
+                noActiveOption.disabled = true;
+                courseSelect.appendChild(noActiveOption);
+                return;
+            }
+
+            activeCourses.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.title;
+                option.textContent = `${course.title} (₹${course.price} - ${course.duration} months)`;
+                courseSelect.appendChild(option);
+            });
+        }
+
+        // Handle video upload form submission
+        document.getElementById('trainer-video-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('video-title').value.trim();
+            const description = document.getElementById('video-description').value.trim();
+            const course = document.getElementById('video-course').value;
+            const videoFile = document.getElementById('trainer-video-file').files[0];
+            const status = document.getElementById('video-status').value;
+
+            if (!title || !description || !course || !videoFile) {
+                alert('All fields are required. Please fill in all the details.');
+                return;
+            }
+
+            // Validate file size (100MB limit)
+            if (videoFile.size > 100 * 1024 * 1024) {
+                alert('File size must be less than 100MB');
+                return;
+            }
+
+            // Validate file type
+            if (!videoFile.type.startsWith('video/')) {
+                alert('Please select a valid video file');
+                return;
+            }
+
+            // Create video URL from file
+            const videoUrl = URL.createObjectURL(videoFile);
+
+            // Get current trainer videos
+            const trainerVideos = getTrainerVideos();
+
+            // Check for duplicate titles
+            const duplicate = trainerVideos.some(video => video.title === title && video.course === course);
+            if (duplicate) {
+                alert('A video with this title already exists for the selected course.');
+                return;
+            }
+
+            // Add new video
+            trainerVideos.push({
+                title,
+                description,
+                course,
+                videoUrl,
+                status,
+                uploadDate: new Date().toISOString(),
+                fileName: videoFile.name,
+                trainer: 'Current Trainer' // You can modify this to get actual trainer name
+            });
+
+            // Save to localStorage
+            saveTrainerVideos(trainerVideos);
+
+            alert('Video uploaded successfully! Students can now view this video.');
+
+            // Reset form
+            document.getElementById('trainer-video-form').reset();
+
+            // Notify that video is available for students
+            console.log('Video uploaded and available for students:', title);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            populateCourseDropdown();
+        });
     </script>
 </body>
 </html>

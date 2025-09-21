@@ -46,6 +46,12 @@
             <!-- Attendance records will be displayed here -->
         </div>
 
+        <!-- Trainer Videos Section -->
+        <h2><i class="fas fa-video"></i> Videos from Trainers</h2>
+        <div id="trainer-videos-container" class="trainer-videos-section">
+            <!-- Trainer videos will be dynamically added here -->
+        </div>
+
         <!-- <h2>Recorded Classes</h2>
         <div class="recorded-classes-list">
             <!-- Recorded classes will be dynamically added here -->
@@ -72,6 +78,89 @@
         }
 
         loadStudentAttendance();
+
+        // Load and display trainer videos
+        function loadTrainerVideos() {
+            const trainerVideos = JSON.parse(localStorage.getItem('trainerVideos')) || [];
+            const container = document.getElementById('trainer-videos-container');
+
+            if (trainerVideos.length === 0) {
+                container.innerHTML = '<p class="no-videos">No videos available from trainers yet. Check back later!</p>';
+                return;
+            }
+
+            // Filter only active videos
+            const activeVideos = trainerVideos.filter(video => video.status === 'Active');
+
+            if (activeVideos.length === 0) {
+                container.innerHTML = '<p class="no-videos">No active videos available from trainers.</p>';
+                return;
+            }
+
+            let html = '';
+            activeVideos.forEach((video, index) => {
+                const uploadDate = new Date(video.uploadDate).toLocaleDateString();
+                html += `
+                    <div class="trainer-video-item" data-video-id="${index}">
+                        <div class="video-header">
+                            <h3 class="video-title">${video.title}</h3>
+                            <span class="video-status status-${video.status.toLowerCase()}">${video.status}</span>
+                        </div>
+                        <p class="video-description">${video.description}</p>
+                        <div class="video-meta">
+                            <span class="video-course"><i class="fas fa-book"></i> ${video.course}</span>
+                            <span class="video-trainer"><i class="fas fa-user"></i> ${video.trainer}</span>
+                            <span class="video-date"><i class="fas fa-calendar"></i> ${uploadDate}</span>
+                        </div>
+                        <div class="video-player-container">
+                            <video controls class="trainer-video-player" preload="metadata">
+                                <source src="${video.videoUrl}" type="video/mp4">
+                                <source src="${video.videoUrl}" type="video/webm">
+                                <source src="${video.videoUrl}" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-actions">
+                            <button class="btn-play" onclick="playVideo(${index})">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <button class="btn-download" onclick="downloadVideo('${video.fileName}', '${video.videoUrl}')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Play video function
+        function playVideo(videoIndex) {
+            const videoItems = document.querySelectorAll('.trainer-video-item');
+            const targetVideo = videoItems[videoIndex].querySelector('.trainer-video-player');
+            if (targetVideo) {
+                targetVideo.play();
+            }
+        }
+
+        // Download video function
+        function downloadVideo(fileName, videoUrl) {
+            const link = document.createElement('a');
+            link.href = videoUrl;
+            link.download = fileName || 'trainer-video.mp4';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Load trainer videos when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTrainerVideos();
+
+            // Refresh videos every 30 seconds to check for new uploads
+            setInterval(loadTrainerVideos, 30000);
+        });
     </script>
     <!-- <script>
         function getRecordedClasses() {

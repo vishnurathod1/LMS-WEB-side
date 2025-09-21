@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Recorded Class</title>
+    <link rel="stylesheet" href="trainer_styles.css" />
+    <link rel="stylesheet" href="add_recorded_class.css" />
+</head>
+<body>
+    <div class="trainer-container">
+        <h1>Add New Recorded Class</h1>
+        <form id="add-recorded-class-form">
+            <label for="title">Recorded Class Title:</label>
+            <input type="text" id="title" name="title" required /><br /><br />
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br /><br />
+
+            <label for="lecturer">Lecturer:</label>
+            <input type="text" id="lecturer" name="lecturer" required /><br /><br />
+
+            <label for="videoSrc">Video Source URL:</label>
+            <input type="url" id="videoSrc" name="videoSrc" required /><br /><br />
+
+            <button type="submit">Add Recorded Class</button>
+        </form>
+        <a href="trainer_home.html" class="back-link">Back to Trainer Home</a>
+    </div>
+    <script>
+        document.getElementById('add-recorded-class-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const lecturer = document.getElementById('lecturer').value;
+            const videoSrc = document.getElementById('videoSrc').value;
+
+            const recordedClass = { title, description, lecturer, videoSrc };
+
+            const recordedClasses = JSON.parse(localStorage.getItem('recordedClasses')) || [];
+            recordedClasses.push(recordedClass);
+            localStorage.setItem('recordedClasses', JSON.stringify(recordedClasses));
+
+            alert('Recorded class added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

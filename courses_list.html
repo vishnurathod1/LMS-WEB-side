@@ -187,6 +187,45 @@
         </div>
     </div>
     <script>
+        // Initialize courses in localStorage on page load
+        function initializeCourses() {
+            const existingCourses = localStorage.getItem('courses');
+            if (!existingCourses) {
+                const courses = [
+                    { title: "Introduction to Programming", price: "2000.99", duration: "3", status: "Active" },
+                    { title: "Web Development Basics", price: "30000.99", duration: "4", status: "Active" },
+                    { title: "Data Science Fundamentals", price: "40000.99", duration: "6", status: "Active" },
+                    { title: "Machine Learning Essentials", price: "5479.99", duration: "8", status: "Active" },
+                    { title: "Advanced Python Programming", price: "9000.99", duration: "2", status: "Active" },
+                    { title: "JavaScript for Beginners", price: "40000.99", duration: "1", status: "Active" },
+                    { title: "Database Management Systems", price: "35000.99", duration: "12", status: "Active" },
+                    { title: "Cloud Computing Fundamentals", price: "90000.99", duration: "8", status: "Active" },
+                    { title: "Cybersecurity Basics", price: "5600", duration: "6", status: "Active" },
+                    { title: "Software Engineering Principles", price: "30000.99", duration: "7", status: "Active" },
+                    { title: "Mobile App Development", price: "250000.99", duration: "8", status: "Active" },
+                    { title: "Artificial Intelligence Overview", price: "349.99", duration: "2.5", status: "Active" },
+                    { title: "DevOps Practices", price: "50000.99", duration: "9", status: "Active" },
+                    { title: "Blockchain Technology", price: "34000.99", duration: "2.5", status: "Active" },
+                    { title: "Internet of Things (IoT)", price: "27009.99", duration: "3", status: "Active" },
+                    { title: "Big Data Analytics", price: "9000.99", duration: "6-8", status: "Active" },
+                    { title: "UI/UX Design Principles", price: "139.99", duration: "7", status: "Active" },
+                    { title: "Agile Project Management", price: "10069.99", duration: "6", status: "Active" },
+                    { title: "Ethical Hacking", price: "5000.99", duration: "12", status: "Active" },
+                    { title: "Game Development with Unity", price: "8000.99", duration: "18", status: "Active" },
+                    { title: "Digital Marketing Strategies", price: "3000.99", duration: "12", status: "Active" },
+                    { title: "Financial Modeling", price: "25009.99", duration: "9", status: "Active" },
+                    { title: "Graphic Design Mastery", price: "5000.99", duration: "9", status: "Active" },
+                    { title: "Photography Techniques", price: "9009.99", duration: "7", status: "Active" },
+                    { title: "Video Editing and Production", price: "18900.99", duration: "8", status: "Active" }
+                ];
+                localStorage.setItem('courses', JSON.stringify(courses));
+                console.log('Courses initialized in localStorage');
+            }
+        }
+
+        // Initialize courses when page loads
+        initializeCourses();
+
         document.querySelectorAll('.enroll-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const title = button.getAttribute('data-title');
