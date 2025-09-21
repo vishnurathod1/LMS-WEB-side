@@ -1,8 +1,4 @@
- /* ===================================
-   Privacy Policy Page Styles
-   =================================== */
 
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -649,8 +645,8 @@ body {
     .policy-header,
     .policy-cta,
     .footer {
-        background: none !important;
-        color: black !important;
+        background: none;
+        color: black ;
     }
 
     .policy-section {
