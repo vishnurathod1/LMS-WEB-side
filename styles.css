@@ -8,7 +8,7 @@
 body {
     font-family: 'Arial', sans-serif;
    
- background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+    background:linear-gradient(55deg, #667eea, #764ba2,red, orange,aqua, yellow, green, blue, indigo, violet,black,white);
     display: flex;
      justify-content: center;
     align-items: center; 
@@ -322,7 +322,7 @@ color: white;
     padding: 60px 20px 20px;
     min-height: 100vh;
     color: white;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,rgb(233, 156, 156),white);
 }
 
 .manage-users-main {
