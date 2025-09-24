@@ -1,8 +1,8 @@
 .feedback-page{
-   background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
     min-height: 100vh;
     margin: 10px,0px,2px;
     color: white,black;
+    background: white;
 
 }
 
@@ -11,8 +11,9 @@
     justify-content: space-evenly;
     align-items: center;
     background-color: #222020;
-    color: white;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+    color: black;
+    background-color: white;
+  
 
 }
 .navbar-menu{
@@ -47,8 +48,8 @@
     margin: 20px;
     font-size: 20px;
     border: 2px solid black;
-    width: 400px;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+    width: 600px;
+ background-color: rgb(253, 216, 216);
     height: 900px;
 }
 .form-group{
