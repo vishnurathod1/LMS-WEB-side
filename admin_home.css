@@ -1,0 +1,201 @@
+/* Admin Home Page Styles */
+
+/* Admin page body */
+.admin-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c2929;
+}
+
+/* Admin header */
+.admin-header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin: 0 15px;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-link:hover {
+    text-decoration: underline;
+}
+
+.search-bar input {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    width: 400px;
+}
+
+#mode {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.notification-icon {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Admin main content */
+.admin-main {
+    width: 70px;
+    margin: 0 ;
+}
+
+.admin-main h1 {
+    text-align: center;
+    width: 450px;
+    height: 60px;
+    background-color: white;
+    color: black;
+
+
+}
+
+/* Features section */
+.admin-features {
+    width:300px;
+    background-color: white;
+    color: black;
+
+    
+}
+
+.category-section {
+    background-color: rgb(49, 46, 46);
+    width:190px;
+    height:800px;
+    padding:25px;
+    border-radius:8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    gap: 30px;
+    border: 2px solid black;
+}
+
+.category-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    width: 250px;
+    gap: 10px;
+}
+
+.featuresList li {
+    margin-bottom: 10px;
+}
+
+.featuresList a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.featuresList a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.featuresList i {
+    margin-right: 10px;
+}
+
+/* Content display area */
+.content-display {
+    background-color: rgb(243, 234, 234);
+     padding-left: 240px;
+     margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    justify-content: center;
+    text-align: center;
+    height: 60px;
+    width: 1220px;
+}
+
+#featureContent {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+
+}
+
+#featureContent h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+#featureContent iframe {
+    width: 100%;
+    height: 900px;
+    border: none;
+    
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .navbar-menu {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .navbar-item {
+        margin: 5px 0;
+    }
+    
+    .admin-main {
+        padding: 10px;
+    }
+    
+    .category-section {
+        padding: 15px;
+    }
+}

@@ -2,7 +2,7 @@
 
 .admin-page {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #302d2d;
     color: #333;
     margin: 0;
     padding: 0;
@@ -66,12 +66,11 @@
 }
 
 .admin-main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
+    width: 1200px;
+    background-color:white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
 
 .admin-main h1 {
