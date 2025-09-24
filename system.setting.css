@@ -142,16 +142,8 @@ input[type="password"]:focus {
     padding: 0;
 }
 
-.navbar-item {
-    margin-left: 20px;
-}
+t
 
-.navbar-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
 
 .navbar-link:hover {
     background-color: #555;
