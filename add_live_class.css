@@ -2,8 +2,8 @@
 
 body.add-live-class-page {
     font-family: 'Arial', sans-serif;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
-    margin: 0;
+  background-color: #302d2d;
+    color:white;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -11,7 +11,8 @@ body.add-live-class-page {
 }
 
 .navbar {
-    background-color: #333;
+   background-color: #302d2d;
+    color:white;
     padding: 10px 0;
     position: fixed;
     top: 0;
