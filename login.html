@@ -63,6 +63,20 @@
                 </div>
             </div>
             
+            <div class="form-group" id="subjectGroup" style="display: none;">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject">
+                    <option value="">Select Subject</option>
+                    <option value="js">JavaScript</option>
+                    <option value="css">CSS</option>
+                    <option value="html">HTML</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="other">Other</option>
+                    
+                </select>
+            </div>
+            
             <button  type="submit" class="submit-btn">Login</button>
         </form>
         <p class="register-link">Don't have an account? <a href="registration.html">Register here</a></p>
@@ -79,14 +93,32 @@
             localStorage.setItem('users', JSON.stringify(users));
         }
 
+        // Show/hide subject field based on user type
+        document.querySelectorAll('input[name="userType"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const subjectGroup = document.getElementById('subjectGroup');
+                if (e.target.value === 'trainer') {
+                    subjectGroup.style.display = 'block';
+                } else {
+                    subjectGroup.style.display = 'none';
+                }
+            });
+        });
+
         document.getElementById('loginForm').addEventListener('submit', (e)=> {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const userType = document.querySelector('input[name="userType"]:checked').value;
+            const subject = document.getElementById('subject').value;
 
             if (!name || !email) {
                 alert('Name and Email are required.');
+                return;
+            }
+
+            if (userType === 'trainer' && !subject) {
+                alert('Please select a subject for trainers.');
                 return;
             }
 
@@ -95,16 +127,26 @@
 
             if (!existingUser) {
                 // Add new user automatically
-                users.push({ name, email, role: capitalizeFirstLetter(userType), status: 'Active' });
+                users.push({ name, email, role: capitalizeFirstLetter(userType), subject: subject, status: 'Active' });
                 saveUsers(users);
                 alert('New user added successfully!');
             }
 
-            // Redirect based on user type
+            // Redirect based on user type and subject
             if (userType === 'admin') {
                 window.location.href = 'admin_home.html';
             } else if (userType === 'trainer') {
-                window.location.href = 'trainer_home.html';
+                if (subject === 'js') {
+                    window.location.href = 'js_trainer.html';
+                } else if (subject === 'css') {
+                    window.location.href = 'css_trainer.html';
+                } else if (subject === 'java') {
+                    window.location.href = 'java.html';
+                } else if (subject === 'Python') {
+                    window.location.href = 'Python.html';    
+                } else {
+                    window.location.href = 'subject_trainer.html';
+                }
             } else if (userType === 'trainee') {
                 window.location.href = 'student_home.html';
             }
