@@ -1,0 +1,4 @@
+- [x] Update trainer_home.html structure to match admin_home.html: add search bar, content display section, change menu to featuresList
+- [x] Add JavaScript for filtering features and loading content in iframes
+- [x] Adjust trainer_styles.css to style the new structure if needed
+- [ ] Test the page to ensure menu displays and functions like admin home page
