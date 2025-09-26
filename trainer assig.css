@@ -42,10 +42,10 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
-        background:linear-gradient(47deg, #667eea, #764ba2,red, orange, yellow, green, blue,  violet,white, grey, brown, pink);
+    background:linear-gradient(47deg, wheat,white)
 }
 .content{
-    background:linear-gradient(47deg, #667eea, #764ba2,red, orange, yellow, green, blue,  violet,white, grey, brown, pink);
+    background:linear-gradient(47deg, wheat,white);
     height: 1000px;
     width: 40%;
     border: 2px solid black;

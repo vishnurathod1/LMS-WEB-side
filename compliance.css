@@ -7,10 +7,13 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #cad1f1 0%, #764ba2 100%);
     min-height: 100vh;
     color: #333;
     padding-top: 60px; /* For fixed navbar */
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
 }
 
 /* Navbar styles */
@@ -86,7 +89,7 @@ body {
 /* Trainer Compliance Section */
 .trainer-compliance {
     background: white;
-    padding: 30px;
+    padding-left: 200px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
@@ -197,7 +200,7 @@ body {
 
 /* Compliance container for separate pages */
 .compliance-container {
-    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+   background-color: wheat;
     padding:20px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
