@@ -24,7 +24,7 @@
     <div class="container">
         <h1>Student Attendance</h1>
 
-        <div class="form-section">
+        <!-- <div class="form-section">
             <h2>Add Attendance</h2>
             <form id="attendanceForm">
                 <label for="userName">User Name:</label>
@@ -41,7 +41,7 @@
 
                 <button type="submit">Add Attendance</button>
             </form>
-        </div>
+        </div> -->
 
         <div class="export-buttons" style="margin-bottom: 10px;">
             <button onclick="exportToExcel()">Export to Excel</button>
@@ -55,6 +55,7 @@
                     <tr>
                         <th>User Type</th>
                         <th>User Name</th>
+                        <th>Subject</th>
                         <th>Date</th>
                         <th>Start Time</th>
                         <th>End Time</th>
@@ -84,6 +85,7 @@
                 row.innerHTML = `
                     <td>${record.userType}</td>
                     <td>${record.userName}</td>
+                    <td>${record.subject || ''}</td>
                     <td>${record.date}</td>
                     <td>${record.startTime || ''}</td>
                     <td>${record.endTime || ''}</td>
@@ -167,5 +169,3 @@
     </script>
 </body>
 </html>
- 
- 

@@ -14,7 +14,7 @@ body {
 }
 
 .trainer-header {
-    background-color: #eb8f8f;
+    background-color: rgb(245, 248, 247);
     margin-top: 110px;
     color: black;
     font-weight: bold;
@@ -96,7 +96,7 @@ body {
    
     padding-left: 250px;
     background-color: #0056b3;
-    margin-top: 30px;
+    margin-top: 31px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     justify-content: center;
@@ -109,8 +109,8 @@ body {
 
 .category-section{
     color: #c41c1c;
-    padding: 10px;
-    font-size: 20px;
+    padding: 9px;
+    font-size: 15px;
 }
 
 #featureContent {
