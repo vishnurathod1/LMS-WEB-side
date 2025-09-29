@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white); 
+    background:linear-gradient(55deg, #c8cfeeff, #dfd5e9ff,rgb(170, 167, 167), rgb(202, 202, 201))
 }
 
 .navbar {
