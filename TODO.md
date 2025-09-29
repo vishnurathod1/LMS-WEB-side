@@ -1,6 +1,4 @@
-- [x] Update trainer_home.html structure to match admin_home.html: add search bar, content display section, change menu to featuresList
-- [x] Add JavaScript for filtering features and loading content in iframes
-- [x] Adjust trainer_styles.css to style the new structure if needed
-- [ ] Test the page to ensure menu displays and functions like admin home page
-- [x] Create python.html with basic HTML structure and greeting message
-- [ ] Create CSS files for subject trainer HTML files: css_trainer.css, js_trainer.css, java.css, python.css
+# TODO for Updating Trainer Home Sidebar
+
+- [x] Update trainer_home.html sidebar to include all admin features from admin_home.html
+- [x] Test the updated trainer_home.html in browser

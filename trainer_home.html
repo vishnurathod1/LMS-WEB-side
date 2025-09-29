@@ -1,93 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Trainer Page</title>
-    <link rel="stylesheet" href="trainer_styles.css" />
-    <link
-      rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-       
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer Home</title>
+    <link rel="stylesheet" href="trainer_home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<body>
+     <nav class="navbar">
+        <div class="navbar-container">
+            <a href="home.html" class="navbar-brand">📚 LMS Project</a>
+            <ul class="navbar-menu">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search features..." onkeyup="filterFeatures()" />
+                </div>
+                <li class="navbar-item"><a href="home.html" class="navbar-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="navbar-item"><a href="admin_home.html" class="navbar-link"><i class="fas fa-user-shield"></i> Admin</a></li>
+                <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fas fa-chalkboard-teacher"></i> Trainer</a></li>
+                <li class="navbar-item"><a href="student_home.html" class="navbar-link"><i class="fas fa-graduation-cap"></i> Student</a></li>
+                <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<body class="trainer-page">
-    <div class="trainer-header">
-     <main class="trainer-main">
+    <aside class="sidebar">
+        <ul class="featuresList">
+             <li><a href="trainer_dashboard.html"><i class="fas fa-chart-bar"></i>Trainer Dashboard</a></li>
+            <li><a href="view_report.html"><i class="fas fa-file-alt"></i> View Reports</a></li>
+            <li><a href="add_recorded_class_upload.html"><i class="fa-solid fa-video"></i> Add Recorded class</a></li>
+            <li><a href="add_live_class.html"><i class="fa-solid fa-video"></i> Add live class</a></li>
+            <li><a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="security_settings.html"><i class="fas fa-lock"></i> Security Settings</a></li>
+            <li><a href="performance_metrics.html"><i class="fas fa-trophy"></i> Performance Metrics</a></li>
+            <li><a href="trainer_compliance.html"><i class="fas fa-check-circle"></i> Compliance</a></li>
+            <li><a href="system_updates.html"><i class="fas fa-sync-alt"></i> System Updates</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="trainer_assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+            <li><a href="veiw_Student_Att.html"><i class="fas fa-calendar-check"></i> student Attendance</a></li>
+            <li><a href="trainer_attendance.html"><i class="fas fa-calendar-check"></i>trainer Attendance</a></li>
+            
+        </ul>
+    </aside>
+
+    <main class="main-content">
         <section class="content-display">
             <div id="featureContent" style="margin-top: 20px; padding: 20px; border: 1px solid #ddd; background-color: #f9f9f9; display: none;">
-                <h1>Trainer Dashboard</h1>
                 <h3 id="contentTitle">Selected Feature Content</h3>
                 <div id="contentArea"></div>
             </div>
         </section>
-           
-            <div class="category-section">
-                <h3><i class="fa fa-cogs"></i> Trainer Features</h3>
-                <ul class="featuresList">
-                    <li><a href="manage_courses.html"><i class="fas fa-book"></i> Manage Courses</a></li>
-                    <li><a href="trainer_schedule.html"><i class="fas fa-calendar-alt"></i> Trainer Schedule</a></li>
-                    <li><a href="view_trainees.html"><i class="fas fa-users"></i> View Trainees</a></li>
-                    <li><a href="performance_metrics.html"><i class="fas fa-chart-line"></i> Performance Metrics</a></li>
-                    <li><a href="trainer_compliance.html"><i class="fas fa-check-circle"></i> Compliance</a></li>
-                    <li><a href="trainer_system_updates.html"><i class="fas fa-sync"></i> System Updates</a></li>
-                    <li><a href="add_recorded_class_upload.html"><i class="fas fa-video"></i> Recorded Class Add</a></li>
-                    <li><a href="add_live_class.html"><i class="fas fa-play-circle"></i> Live Class Add</a></li>
-                    <li><a href="trainer_assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
-                    <li><a href="trainer_dashboard.html"><i class="fa fa-chart-bar"></i> Dashboard</a></li>
-                    <li><a href="trainer_attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-                    li><a href="veiw_Student_Att.html"><i class="fas fa-calendar-check"></i>Student Attendance</a></li>
-                </ul>
-            </div>
 
-           
-
-           
-    </div>
-        </section>
-        <script>
-            function filterFeatures() {
-                const input = document.getElementById('searchInput');
-                const filter = input.value.toLowerCase();
-                const lists = document.querySelectorAll('.featuresList');
-                lists.forEach(ul => {
-                    const li = ul.getElementsByTagName('li');
-                    for (let i = 0; i < li.length; i++) {
-                        const a = li[i].getElementsByTagName('a')[0];
-                        const textValue = a.textContent || a.innerText;
-                        if (textValue.toLowerCase().indexOf(filter) > -1) {
-                            li[i].style.display = "";
-                        } else {
-                            li[i].style.display = "none";
-                        }
+        <!-- <div class="category-section">
+            <h3>Trainer Features</h3>
+            <ul class="featuresList">
+                <li><a href="manage_users.html"><i class="fas fa-users"></i> Manage Users</a></li>
+                <li><a href="view_report.html"><i class="fas fa-file-alt"></i> View Reports</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="system_settings.html"><i class="fas fa-cogs"></i> System Settings</a></li>
+                <li><a href="user_roles.html"><i class="fas fa-key"></i> User Roles</a></li>
+                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="activity_monitoring.html"><i class="fas fa-chart-line"></i> Activity Monitoring</a></li>
+                <li><a href="feedback.html"><i class="fas fa-comments"></i> Feedback</a></li>
+                <li><a href="security_settings.html"><i class="fas fa-lock"></i> Security Settings</a></li>
+                <li><a href="performance_metrics.html"><i class="fas fa-trophy"></i> Performance Metrics</a></li>
+                <li><a href="admin_complaints.html"><i class="fas fa-check-circle"></i> Compliance</a></li>
+                <li><a href="system_updates.html"><i class="fas fa-sync-alt"></i> System Updates</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="student_assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+                <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Manage Attendance</a></li>
+                <li><a href="admin_data_sorting.html"><i class="fas fa-sort-amount-down"></i> Data Sorting</a></li>
+                <li><a href="admin_profile.html"><i class="fas fa-user-circle"></i> Admin Profile</a></li>
+            </ul>
+        </div> -->
+    </main>
+    <script>
+        function filterFeatures() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const lists = document.querySelectorAll('.featuresList');
+            lists.forEach(ul => {
+                const li = ul.getElementsByTagName('li');
+                for (let i = 0; i < li.length; i++) {
+                    const a = li[i].getElementsByTagName('a')[0];
+                    const textValue = a.textContent || a.innerText;
+                    if (textValue.toLowerCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
                     }
-                });
-            }
+                }
+            });
+        }
 
-            function loadFeatureContent(title, url) {
-                const contentDiv = document.getElementById('featureContent');
-                const contentTitle = document.getElementById('contentTitle');
-                const contentArea = document.getElementById('contentArea');
-                
-                contentTitle.textContent = title;
-                contentArea.innerHTML = `<iframe src="${url}" width="100%" height="600px" frameborder="0"></iframe>`;
-                contentDiv.style.display = 'block';
-                
-                // Scroll to the content
-                contentDiv.scrollIntoView({ behavior: 'smooth' });
-            }
+        function loadFeatureContent(title, url) {
+            const contentDiv = document.getElementById('featureContent');
+            const contentTitle = document.getElementById('contentTitle');
+            const contentArea = document.getElementById('contentArea');
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const links = document.querySelectorAll('.featuresList a');
-                links.forEach(link => {
-                    link.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        const title = this.textContent;
-                        const url = this.getAttribute('href');
-                        loadFeatureContent(title, url);
-                    });
+            contentTitle.textContent = title;
+            contentArea.innerHTML = `<iframe src="${url}" width="100%" height="600px" frameborder="0"></iframe>`;
+            contentDiv.style.display = 'block';
+
+            // Scroll to the content
+            contentDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.featuresList a');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const title = this.textContent;
+                    const url = this.getAttribute('href');
+                    loadFeatureContent(title, url);
                 });
             });
-        </script>
-        <script src="mode.js"></script>
+        });
+    </script>
 </body>
 </html>
