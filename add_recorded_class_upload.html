@@ -23,13 +23,16 @@
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea><br /><br />
 
-            <label for="lecturer">Lecturer:</label>
-            <input type="text" id="lecturer" name="lecturer" required /><br /><br />
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required /><br /><br />
 
-            <label for="videoSrc">Video Source URL:</label>
-            <input type="url" id="videoSrc" name="videoSrc" placeholder="Enter video URL (optional if uploading file)" /><br /><br />
+            <label for="trainer">Trainer:</label>
+            <input type="text" id="trainer" name="trainer" required /><br /><br />
 
-            <label for="videoFile">Or Upload Video File:</label>
+            <label for="videoUrl">Video Source URL:</label>
+            <input type="url" id="videoUrl" name="videoUrl" placeholder="Enter video URL (optional if uploading file)" /><br /><br />
+
+            <label for="videoFile">Or Upload Video File (Note: Uploaded files will only play in this session):</label>
             <input type="file" id="videoFile" name="videoFile" accept="video/*" /><br /><br />
 
             <div id="file-info" style="display: none; margin-top: 10px; padding: 10px; background: #f0f0f0; border-radius: 5px;">
@@ -55,14 +58,14 @@
                 fileInfo.style.display = 'block';
 
                 // Clear URL field when file is selected
-                document.getElementById('videoSrc').value = '';
+                document.getElementById('videoUrl').value = '';
             } else {
                 fileInfo.style.display = 'none';
             }
         });
 
         // URL input handling
-        document.getElementById('videoSrc').addEventListener('input', function(e) {
+        document.getElementById('videoUrl').addEventListener('input', function(e) {
             if (e.target.value.trim() !== '') {
                 // Clear file input when URL is entered
                 document.getElementById('videoFile').value = '';
@@ -75,29 +78,35 @@
 
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
-            const lecturer = document.getElementById('lecturer').value;
-            const videoSrc = document.getElementById('videoSrc').value;
-            const videoFile = document.getElementById('videoFile').files[0];
+            const course = document.getElementById('course').value;
+            const trainer = document.getElementById('trainer').value;
+            const videoUrlInput = document.getElementById('videoUrl').value.trim();
+            const videoFileInput = document.getElementById('videoFile').files[0];
 
             // Validation - either URL or file must be provided
-            if (!videoSrc.trim() && !videoFile) {
+            if (!videoUrlInput && !videoFileInput) {
                 alert('Please provide either a video URL or upload a video file.');
                 return;
             }
 
-            // File size validation (100MB limit)
-            if (videoFile && videoFile.size > 100 * 1024 * 1024) {
-                alert('File size must be less than 100MB.');
-                return;
+            let videoUrl = videoUrlInput;
+
+            if (videoFileInput) {
+                if (videoFileInput.size > 100 * 1024 * 1024) {
+                    alert('File size must be less than 100MB.');
+                    return;
+                }
+                // Create object URL for the uploaded file
+                videoUrl = URL.createObjectURL(videoFileInput);
             }
 
             const recordedClass = {
                 title,
                 description,
-                lecturer,
-                videoSrc: videoSrc.trim(),
-                fileName: videoFile ? videoFile.name : null,
-                fileSize: videoFile ? videoFile.size : null,
+                course,
+                trainer,
+                videoUrl,
+                status: 'Available',
                 uploadDate: new Date().toISOString()
             };
 
