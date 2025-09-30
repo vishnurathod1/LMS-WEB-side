@@ -81,12 +81,18 @@
     padding: 20px 0;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     overflow-y: auto;
+    background-color: rgb(248, 248, 248);
+    
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    
+    border:3px solid rgb(245, 185, 185);
+    border-radius: 25px;
+    background-color: #cac5c5;
 }
 
 .sidebar li {
@@ -103,11 +109,15 @@
 }
 
 .sidebar a:hover {
-    background-color: #ddd;
+    background-color: #f1cece;
+    border: 3px solid black;
+    border-radius: 15px;
+    color: black;
 }
 
 .sidebar a i {
     margin-right: 10px;
+    
 }
 
 /* Main Content Styles */
@@ -115,8 +125,10 @@
     margin-left: 250px;
     margin-top: 60px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #fdfcfc;
     min-height: calc(100vh - 60px);
+    border-radius: 25px;
+    border: 5px solid black;
 }
 
 .welcome-section {
