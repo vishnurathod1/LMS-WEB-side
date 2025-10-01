@@ -4,20 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Recorded Lecture Class</title>
-    <link rel="stylesheet" href="recorded_lecture_updated.css" />
+    <link rel="stylesheet" href="recorded_lecture.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="home.html" class="navbar-brand">LMS Project</a>
-            <ul class="navbar-menu">
-                <li class="navbar-item"><a href="home.html" class="navbar-link">Home</a></li>
-                <li class="navbar-item"><a href="student_home.html" class="navbar-link">Student Home</a></li>
-                <li class="navbar-item"><a href="login.html" class="navbar-link">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+    
     <main class="recorded-lecture-class-main">
         <h1><i class="fas fa-play-circle"></i> Recorded Lecture Classes</h1>
         <div class="recorded-lecture-class-list">
@@ -25,13 +16,83 @@
         </div>
     </main>
     <script>
-        function getRecordedClasses() {
-            const recordedClasses = localStorage.getItem('recordedClasses');
-            return recordedClasses ? JSON.parse(recordedClasses) : [];
+        // IndexedDB helper functions
+        const dbName = 'RecordedVideosDB';
+        const storeName = 'videos';
+
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(dbName, 1);
+                request.onupgradeneeded = function(event) {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(storeName)) {
+                        db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+                    }
+                };
+                request.onsuccess = function(event) {
+                    resolve(event.target.result);
+                };
+                request.onerror = function(event) {
+                    reject(event.target.error);
+                };
+            });
         }
 
-        function renderRecordedClasses() {
-            const recordedClasses = getRecordedClasses();
+        function getRecordedClasses() {
+            return openDB().then(db => {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readonly');
+                    const store = transaction.objectStore(storeName);
+                    const request = store.getAll();
+                    request.onsuccess = function(event) {
+                        const videos = event.target.result;
+                        // Map to expected format
+                        const recordedClasses = videos.map(video => ({
+                            id: video.id,
+                            title: video.title,
+                            description: video.subject || 'No description',
+                            lecturer: video.trainer,
+                            uploadDate: video.uploadDate || new Date().toISOString(),
+                            videoSrc: video.fileData,
+                            fileName: video.title + '.mp4',
+                            fileSize: video.fileSize || (video.fileData ? Math.round(video.fileData.length * 3 / 4) : 0)
+                        }));
+                        resolve(recordedClasses);
+                    };
+                    request.onerror = function(event) {
+                        reject(event.target.error);
+                    };
+                });
+            }).catch(err => {
+                console.error('Error fetching videos from IndexedDB', err);
+                return [];
+            });
+        }
+
+        function deleteVideoFromDB(title) {
+            return openDB().then(db => {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readwrite');
+                    const store = transaction.objectStore(storeName);
+                    const request = store.getAll();
+                    request.onsuccess = function(event) {
+                        const videos = event.target.result;
+                        const videoToDelete = videos.find(v => v.title === title);
+                        if (videoToDelete) {
+                            const deleteRequest = store.delete(videoToDelete.id);
+                            deleteRequest.onsuccess = () => resolve();
+                            deleteRequest.onerror = (e) => reject(e.target.error);
+                        } else {
+                            reject(new Error('Video not found'));
+                        }
+                    };
+                    request.onerror = (e) => reject(e.target.error);
+                });
+            });
+        }
+
+        async function renderRecordedClasses() {
+            const recordedClasses = await getRecordedClasses();
             const container = document.querySelector('.recorded-lecture-class-list');
             container.innerHTML = '';
 
@@ -165,32 +226,32 @@
         }
 
         // Delete video function
-        function deleteVideo(title) {
+        async function deleteVideo(title) {
             if (confirm(`Are you sure you want to delete the recorded class "${title}"? This action cannot be undone.`)) {
-                const recordedClasses = getRecordedClasses();
-                const updatedClasses = recordedClasses.filter(recordedClass => recordedClass.title !== title);
-
-                localStorage.setItem('recordedClasses', JSON.stringify(updatedClasses));
-
-                // Re-render the list
-                renderRecordedClasses();
-
-                // Show success message
-                alert(`Recorded class "${title}" has been deleted successfully.`);
-
-                console.log(`Recorded class deleted: ${title}`);
+                try {
+                    await deleteVideoFromDB(title);
+                    // Re-render the list
+                    await renderRecordedClasses();
+                    // Show success message
+                    alert(`Recorded class "${title}" has been deleted successfully.`);
+                    console.log(`Recorded class deleted: ${title}`);
+                } catch (err) {
+                    console.error('Error deleting video', err);
+                    alert('Error deleting video.');
+                }
             }
         }
 
         // Initial render
-        renderRecordedClasses();
-
-        // Handle video errors after rendering
-        setTimeout(handleVideoErrors, 100);
+        (async () => {
+            await renderRecordedClasses();
+            // Handle video errors after rendering
+            setTimeout(handleVideoErrors, 100);
+        })();
 
         // Auto-refresh every 30 seconds to check for new recorded classes
-        setInterval(() => {
-            renderRecordedClasses();
+        setInterval(async () => {
+            await renderRecordedClasses();
             handleVideoErrors();
         }, 30000);
     </script>

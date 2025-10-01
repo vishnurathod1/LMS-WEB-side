@@ -1,320 +1,73 @@
-/* Styles for recorded lecture page */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Styles for Add Recorded Class Upload page */
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 70px 20px 20px;
-}
-
-.navbar {
-    background-color: #333;
-    padding: 12px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
     margin: 0;
     padding: 0;
-}
-
-.navbar-item {
-    margin-left: 20px;
-}
-
-.navbar-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-}
-
-.navbar-link:hover {
-    background-color: #555;
-}
-
-.navbar-link.active {
-    background-color: #667eea;
+    color: #333;
 }
 
 .recorded-lecture-class-main {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.recorded-lecture-class-main h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: white;
-    font-size: 2.5em;
-    font-weight: 300;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.recorded-lecture-class-list {
-    display: grid;
-    gap: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .recorded-lecture-class-item {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.recorded-lecture-class-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.class-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: 20px;
 }
 
 .class-header h3 {
-    margin: 0;
-    font-size: 1.5em;
-    font-weight: 500;
+    margin: 0 0 15px 0;
+    font-size: 1.4em;
+    color: #007bff;
 }
 
-.status-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-
-.class-content {
-    padding: 25px;
-}
-
-.description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-}
-
-.class-meta {
-    margin-bottom: 25px;
+.class-content form {
+    display: flex;
+    flex-direction: column;
 }
 
 .meta-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.meta-item i {
-    width: 20px;
-    margin-right: 10px;
-    color: #667eea;
-}
-
-.video-container {
-    margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.class-video {
-    width: 100%;
-    max-height: 400px;
-    border-radius: 10px;
-}
-
-.no-video-message {
-    text-align: center;
-    padding: 40px 20px;
-    background: #f8f9fa;
-    border: 2px dashed #dee2e6;
-    border-radius: 10px;
-    color: #6c757d;
-}
-
-.no-video-message i {
-    display: block;
     margin-bottom: 15px;
-    font-size: 48px;
+    display: flex;
+    flex-direction: column;
 }
 
-.no-video-message p {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+.meta-item label {
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-.no-video-message small {
-    color: #868e96;
-}
-
-.video-error {
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-    padding: 15px;
+.meta-item input[type="text"],
+.meta-item input[type="url"],
+.meta-item input[type="file"] {
+    padding: 8px 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    margin-top: 15px;
-}
-
-.video-error ul {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-.video-error li {
-    margin-bottom: 5px;
 }
 
 .class-actions {
-    padding: 20px;
-    background: #f8f9fa;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-.btn-download, .btn-delete {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.95em;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin-top: 20px;
 }
 
 .btn-download {
-    background: #007bff;
+    background-color: #007bff;
+    border: none;
     color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
 .btn-download:hover {
-    background: #0056b3;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
-}
-
-.btn-delete {
-    background: #dc3545;
-    color: white;
-}
-
-.btn-delete:hover {
-    background: #c82333;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
-}
-
-/* No classes message */
-.no-classes-message {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.no-classes-message h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.no-classes-message p {
-    color: #666;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    body {
-        padding: 70px 10px 20px;
-    }
-
-    .recorded-lecture-class-main h1 {
-        font-size: 2em;
-    }
-
-    .class-header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .class-header h3 {
-        font-size: 1.3em;
-    }
-
-    .class-content {
-        padding: 20px;
-    }
-
-    .class-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-download, .btn-delete {
-        justify-content: center;
-    }
-
-    .meta-item {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .recorded-lecture-class-main h1 {
-        font-size: 1.8em;
-    }
-
-    .class-content {
-        padding: 15px;
-    }
-
-    .class-header {
-        padding: 15px;
-    }
-
-    .class-video {
-        max-height: 250px;
-    }
+    background-color: #0056b3;
 }

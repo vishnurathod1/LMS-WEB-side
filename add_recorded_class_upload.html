@@ -1,122 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Add Recorded Class</title>
-    <link rel="stylesheet" href="trainer_styles.css" />
-    <link rel="stylesheet" href="add_recorded_class.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recorded Video</title>
+    <link rel="stylesheet" href="recorded_lecture_updated.css">
 </head>
-<style>
-    .trainer-container{
-        width: 600px;
-        border: 3px solid black;
-    }
-</style>
 <body>
-    <div class="trainer-container">
-        <h1>Add New Recorded Class</h1>
-        <form id="add-recorded-class-form">
-            <label for="title">Recorded Class Title:</label>
-            <input type="text" id="title" name="title" required /><br /><br />
-
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" required></textarea><br /><br />
-
-            <label for="course">Course:</label>
-            <input type="text" id="course" name="course" required /><br /><br />
-
-            <label for="trainer">Trainer:</label>
-            <input type="text" id="trainer" name="trainer" required /><br /><br />
-
-            <label for="videoUrl">Video Source URL:</label>
-            <input type="url" id="videoUrl" name="videoUrl" placeholder="Enter video URL (optional if uploading file)" /><br /><br />
-
-            <label for="videoFile">Or Upload Video File (Note: Uploaded files will only play in this session):</label>
-            <input type="file" id="videoFile" name="videoFile" accept="video/*" /><br /><br />
-
-            <div id="file-info" style="display: none; margin-top: 10px; padding: 10px; background: #f0f0f0; border-radius: 5px;">
-                <small id="file-name"></small><br>
-                <small id="file-size"></small>
+    <div class="recorded-lecture-class-main">
+        <h1>Add Recorded Video</h1>
+        <div class="recorded-lecture-class-item">
+            <div class="class-header">
+                <h3>Upload New Recorded Video</h3>
             </div>
-
-            <button type="submit">Add Recorded Class</button>
-        </form>
-        <a href="trainer_home.html" class="back-link">Back to Trainer Home</a>
+            <div class="class-content">
+                <form id="uploadForm">
+                    <div class="meta-item">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="meta-item">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="meta-item">
+                        <label for="trainer">Trainer:</label>
+                        <input type="text" id="trainer" name="trainer" required>
+                    </div>
+                    <div class="meta-item">
+                        <label for="videoFile">Video File:</label>
+                        <input type="file" id="videoFile" name="videoFile" accept="video/*" required>
+                    </div>
+                    <div class="meta-item">
+                        <label for="url">Optional URL:</label>
+                        <input type="url" id="url" name="url">
+                    </div>
+                    <!-- Removed second URL input -->
+                    <!--
+                    <div class="meta-item">
+                        <label for="url2">Optional Additional URL:</label>
+                        <input type="url" id="url2" name="url2">
+                    </div>
+                    -->
+                    <div class="class-actions">
+                        <button type="submit" class="btn-download">Upload Video</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
     <script>
-        // File input handling
-        document.getElementById('videoFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const fileInfo = document.getElementById('file-info');
-            const fileName = document.getElementById('file-name');
-            const fileSize = document.getElementById('file-size');
+        // IndexedDB helper functions
+        const dbName = 'RecordedVideosDB';
+        const storeName = 'videos';
 
-            if (file) {
-                fileName.textContent = 'File: ' + file.name;
-                fileSize.textContent = 'Size: ' + (file.size / 1024 / 1024).toFixed(2) + ' MB';
-                fileInfo.style.display = 'block';
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(dbName, 1);
+                request.onupgradeneeded = function(event) {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(storeName)) {
+                        db.createObjectStore(storeName, { keyPath: 'id', autoIncrement: true });
+                    }
+                };
+                request.onsuccess = function(event) {
+                    resolve(event.target.result);
+                };
+                request.onerror = function(event) {
+                    reject(event.target.error);
+                };
+            });
+        }
 
-                // Clear URL field when file is selected
-                document.getElementById('videoUrl').value = '';
-            } else {
-                fileInfo.style.display = 'none';
-            }
-        });
+        function addVideo(videoData) {
+            return openDB().then(db => {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction(storeName, 'readwrite');
+                    const store = transaction.objectStore(storeName);
+                    const request = store.add(videoData);
+                    request.onsuccess = () => resolve();
+                    request.onerror = (e) => reject(e.target.error);
+                });
+            });
+        }
 
-        // URL input handling
-        document.getElementById('videoUrl').addEventListener('input', function(e) {
-            if (e.target.value.trim() !== '') {
-                // Clear file input when URL is entered
-                document.getElementById('videoFile').value = '';
-                document.getElementById('file-info').style.display = 'none';
-            }
-        });
-
-        document.getElementById('add-recorded-class-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
             const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const course = document.getElementById('course').value;
+            const subject = document.getElementById('subject').value;
             const trainer = document.getElementById('trainer').value;
-            const videoUrlInput = document.getElementById('videoUrl').value.trim();
-            const videoFileInput = document.getElementById('videoFile').files[0];
+            const url = document.getElementById('url').value;
+            const fileInput = document.getElementById('videoFile');
+            const file = fileInput.files[0];
 
-            // Validation - either URL or file must be provided
-            if (!videoUrlInput && !videoFileInput) {
-                alert('Please provide either a video URL or upload a video file.');
-                return;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileData = e.target.result;
+                    const videoData = {
+                        title: title,
+                        subject: subject,
+                        trainer: trainer,
+                        url: url,
+                        fileData: fileData,
+                        uploadDate: new Date().toISOString(),
+                        fileSize: file.size
+                    };
+
+                    addVideo(videoData).then(() => {
+                        alert('Video uploaded successfully!');
+                        document.getElementById('uploadForm').reset();
+                    }).catch(err => {
+                        console.error('Error saving video to IndexedDB', err);
+                        alert('Error saving video.');
+                    });
+                };
+                reader.onerror = function(e) {
+                    console.error('Error reading file', e);
+                    alert('Error reading video file.');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a video file.');
             }
-
-            let videoUrl = videoUrlInput;
-
-            if (videoFileInput) {
-                if (videoFileInput.size > 100 * 1024 * 1024) {
-                    alert('File size must be less than 100MB.');
-                    return;
-                }
-                // Create object URL for the uploaded file
-                videoUrl = URL.createObjectURL(videoFileInput);
-            }
-
-            const recordedClass = {
-                title,
-                description,
-                course,
-                trainer,
-                videoUrl,
-                status: 'Available',
-                uploadDate: new Date().toISOString()
-            };
-
-            const recordedClasses = JSON.parse(localStorage.getItem('recordedClasses')) || [];
-            recordedClasses.push(recordedClass);
-            localStorage.setItem('recordedClasses', JSON.stringify(recordedClasses));
-
-            alert('Recorded class added successfully!');
-            this.reset();
-            document.getElementById('file-info').style.display = 'none';
         });
     </script>
 </body>
