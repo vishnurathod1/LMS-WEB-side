@@ -1,52 +1,10 @@
-/* Styles for student home page */
+/* Student Home Page Styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    min-height: 100px;
-    display: flex;
-     justify-content: left;
-    align-items:left; 
-    
-}
-
-.container {
-    background: white;
-    padding:0px;
-    border-radius: 10px;
-    box-shadow: 0 15px 35px rgba(245, 240, 240, 0.1);
-    width: 50%;
-  
-    
-}
-.class{ 
-    border-radius: 10px;
-    box-shadow: 0 15px 35px rgba(247, 243, 243, 0.1);
-    width:10005px;
-    height:100px;
-    border-radius: 10px;
-    font-size: 20px;
-    justify-content: left;
-    text-align: left;
-    
-   
-
-}
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 2.5em;
-    font-weight: 300;
-} 
+/* Navbar Styles */
 .navbar {
     background-color: #333;
-    padding: 12px 0;
+    color: white;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -54,19 +12,18 @@ h1 {
 }
 
 .navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
 .navbar-brand {
-    color: #fff;
+    font-size: 24px;
     text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
+    color: white;
 }
 
 .navbar-menu {
@@ -81,141 +38,182 @@ h1 {
 }
 
 .navbar-link {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
+    padding: 10px;
 }
 
 .navbar-link:hover {
     background-color: #555;
-    border-radius: 5px;
-}
-
-.navbar-link.active {
-    background-color: #667eea;
-    border-radius: 5px;
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    margin: 0 20px;
+    margin-left: 20px;
 }
 
-.search-input {
+.search-bar input {
     padding: 8px 12px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 4px 0 0 4px;
     outline: none;
-    width: 350px;
-    font-size: 14px;
 }
 
-.search-btn {
+.search-bar button {
     padding: 8px 12px;
+    background-color: #667eea;
     border: none;
-    background-color: #555;
-    color: white;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 4px 4px 0;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 14px;
 }
 
-.search-btn:hover {
-    background-color: #777;
+.search-bar button:hover {
+    background-color: #5a67d8;
 }
-.navbar-link1 {
-    color: #fff;
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px; /* Below navbar */
+    width: 250px;
+   
+    background-color: #f4f4f4;
+   
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    background-color: rgb(248, 248, 248);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 3px solid rgb(245, 185, 185);
+    border-radius: 25px;
+    background-color: #cac5c5;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #333;
     text-decoration: none;
-    padding: 10px 15px;
     transition: background-color 0.3s ease;
 }
-.vishnu:hover{
-    background-color: rgb(247, 164, 164);
-    border-radius: 5px;
+
+.sidebar a:hover {
+    background-color: #f1cece;
+    border: 3px solid black;
+    border-radius: 15px;
     color: black;
 }
-.vishnu{
-    border: 2px solid rgb(247, 164, 164);
-    border-radius: 15px;
-    height: auto;
-    width: 100%;
-    margin-bottom:10px;
-    padding: 10px;
-    font-size: 20px;
-    direction: none;
-    color: rgb(15, 3, 3);
-    text-decoration: none;
 
-    
-}
-.Rathod{
-    margin-bottom:50px;
-    direction: none;
-    justify-content: center;
-   
-}
-.student1{
-   background-color: white;
-    padding:20px;
-    width: 300px;
-    border-radius: 15px;
-    height:850px ;
-    justify-content: left;
-    text-align: left;
-    border: #667eea;
-}
-.buttanlog{
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    display: inline-block;
-    margin-top: 20px;
-}
-p{
-    text-decoration: none;
-    color: black;
-    font-size: 2rem;
-    background-color: white;
-    width:860px;
-    border-radius: 15px;
+.sidebar a i {
+    margin-right: 10px;
 }
 
-.recorded-classes-list {
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
-    max-width: 900px;
+/* Main Content Styles */
+.main-content {
+    margin-left: 250px;
+    margin-top: 70px; /* increased margin to avoid overlap with fixed navbar */
+    padding: 20px;
+    background-color: #fdfcfc;
+    min-height: calc(100vh - 70px);
+    border-radius: 25px;
+    border: 5px solid black;
 }
 
-.recorded-class-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background-color: white;
+.welcome-section {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.recorded-class-item h3 {
-    margin-bottom: 10px;
+.welcome-section h1 {
     color: #333;
+    margin-bottom: 10px;
 }
 
-.recorded-class-item p {
-    margin: 5px 0;
-    color: #555;
+.welcome-section p {
+    color: #666;
 }
 
-.recorded-class-item video {
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 5px;
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: none;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
+    .search-bar {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
 }
     
 
