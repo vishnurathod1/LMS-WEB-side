@@ -12,13 +12,13 @@ h1 {
     gap: 20px;
 }
 .course-card {
-   background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+   background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 250px;
     padding: 15px;
     text-align: center;
-    width: 30%;
+    width: 25%;
     height: 390px;
     color: black;
 }

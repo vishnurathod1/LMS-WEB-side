@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+wi<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -158,14 +158,16 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       const links = document.querySelectorAll(".featuresList a");
-      links.forEach((link) => {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
-          const title = this.textContent;
-          const url = this.getAttribute("href");
-          loadFeatureContent(title, url);
+      if (links) {
+        links.forEach((link) => {
+          link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const title = this.textContent;
+            const url = this.getAttribute("href");
+            loadFeatureContent(title, url);
+          });
         });
-      });
+      }
     });
   </script>
 </body>
