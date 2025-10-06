@@ -1,7 +1,5 @@
-# TODO: Update Student Page to Match Trainer Page Display
+# TODO for Login Page Enhancement
 
-## Tasks
-- [x] Update student_home.html to include sidebar, updated navbar, main content area, and JavaScript
-- [x] Update student_home.css to include styles for sidebar, main content, and responsive design from trainer_home.css
-- [ ] Test the updated student page for layout and functionality consistency
-- [ ] Make any necessary adjustments based on testing
+- [x] Update log_reg.css to add educational background image to the body
+- [x] Update login.html to add decorative educational images (e.g., books and graduation cap icons)
+- [x] Add glassmorphism effect to the login container
