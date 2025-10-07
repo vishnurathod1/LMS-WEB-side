@@ -1,4 +1,15 @@
-/* Styles for About Page */
+body{
+  font-family: 'Arial', sans-serif;
+   background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    min-height: 100vh;
+}
 
 .admin-page {
     font-family: Arial, sans-serif;
@@ -20,57 +31,15 @@
     font-size: 2.5em;
 }
 
-.navbar {
-    background-color: #34495e;
-    padding: 10px 0;
-}
 
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.navbar-item {
-    margin-left: 20px;
-}
-
-.navbar-link {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-link:hover,
-.navbar-link.active {
-    background-color: #1abc9c;
-    border-radius: 5px;
-}
 
 .admin-main {
     width: 1200px;
-    background-color:white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color:none;
+   
     justify-content: center;
+    color:black;
+    font-weight: bolder;
 }
 
 .admin-main h1 {
@@ -82,6 +51,7 @@
 
 .about-content {
     line-height: 1.6;
+    
 }
 
 .about-content h2 {

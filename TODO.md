@@ -1,0 +1,4 @@
+- [x] Edit student_home.css to add glass effect to .sidebar
+- [x] Edit trainer_home.css to add glass effect to .sidebar
+- [ ] Test the changes by opening student_home.html in browser
+- [ ] Test the changes by opening trainer_home.html in browser
