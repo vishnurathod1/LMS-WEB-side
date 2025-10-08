@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #606061 0%, #eeecf0 100%);
+    background: linear-gradient(135deg, #efeff1 0%, #eeecf0 100%);
     min-height: 100vh;
     color: #333;
     padding-top: 60px; /* For fixed navbar */
@@ -43,7 +43,7 @@ label {
     margin-bottom: 5px;
     color: #555;
     font-weight: 500;
-       color: white;
+       color: rgb(12, 11, 11);
 }
 
 input[type="text"],

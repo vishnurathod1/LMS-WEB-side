@@ -1,13 +1,14 @@
 // bakground colour chang in button thorugh
-let modeBtn=document.querySelector("#mode")
+let modeBtn=document.querySelector("#mood")
 let currmode="light";
 modeBtn.addEventListener("click",()=>{
  if (currmode === "light"){
     currmode="dark";
-    document.getElementsByClassName("admin-page").style.backgroundColor="white";
+    document.querySelector('body').style.backgroundColor ="black";
 }else{
       currmode="light"
-      document.getElementsByClassName("admin-page").style.backgroundColor="black";
+      document.querySelector('body').style.backgroundColor ="white";
+      
 }
   console.log(currmode)
 });
