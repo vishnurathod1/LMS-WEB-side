@@ -28,11 +28,18 @@
                         <input type="text" id="trainer" name="trainer" required>
                     </div>
                     <div class="meta-item">
-                        <label for="videoFile">Video File:</label>
-                        <input type="file" id="videoFile" name="videoFile" accept="video/*" required>
+                        <label>Video Source:</label>
+                        <input type="radio" id="uploadOption" name="videoSource" value="upload" checked>
+                        <label for="uploadOption">Upload Video File</label>
+                        <input type="radio" id="urlOption" name="videoSource" value="url">
+                        <label for="urlOption">Provide Video URL</label>
                     </div>
-                    <div class="meta-item">
-                        <label for="url">Optional URL:</label>
+                    <div class="meta-item upload-input">
+                        <label for="videoFile">Video File:</label>
+                        <input type="file" id="videoFile" name="videoFile" accept="video/*">
+                    </div>
+                    <div class="meta-item url-input" style="display: none;">
+                        <label for="url">Video URL:</label>
                         <input type="url" id="url" name="url">
                     </div>
                     <!-- Removed second URL input -->
@@ -85,6 +92,21 @@
             });
         }
 
+        // Toggle input fields based on radio selection
+        document.getElementById('uploadOption').addEventListener('change', function() {
+            document.querySelector('.upload-input').style.display = 'block';
+            document.querySelector('.url-input').style.display = 'none';
+            document.getElementById('videoFile').required = true;
+            document.getElementById('url').required = false;
+        });
+
+        document.getElementById('urlOption').addEventListener('change', function() {
+            document.querySelector('.upload-input').style.display = 'none';
+            document.querySelector('.url-input').style.display = 'block';
+            document.getElementById('videoFile').required = false;
+            document.getElementById('url').required = true;
+        });
+
         document.getElementById('uploadForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -94,8 +116,13 @@
             const url = document.getElementById('url').value;
             const fileInput = document.getElementById('videoFile');
             const file = fileInput.files[0];
+            const isUpload = document.getElementById('uploadOption').checked;
 
-            if (file) {
+            if (isUpload) {
+                if (!file) {
+                    alert('Please select a video file.');
+                    return;
+                }
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const fileData = e.target.result;
@@ -112,6 +139,10 @@
                     addVideo(videoData).then(() => {
                         alert('Video uploaded successfully!');
                         document.getElementById('uploadForm').reset();
+                        // Reset display
+                        document.querySelector('.upload-input').style.display = 'block';
+                        document.querySelector('.url-input').style.display = 'none';
+                        document.getElementById('uploadOption').checked = true;
                     }).catch(err => {
                         console.error('Error saving video to IndexedDB', err);
                         alert('Error saving video.');
@@ -123,7 +154,31 @@
                 };
                 reader.readAsDataURL(file);
             } else {
-                alert('Please select a video file.');
+                if (!url) {
+                    alert('Please provide a video URL.');
+                    return;
+                }
+                const videoData = {
+                    title: title,
+                    subject: subject,
+                    trainer: trainer,
+                    url: url,
+                    fileData: null,
+                    uploadDate: new Date().toISOString(),
+                    fileSize: null
+                };
+
+                addVideo(videoData).then(() => {
+                    alert('Video added successfully by URL!');
+                    document.getElementById('uploadForm').reset();
+                    // Reset display
+                    document.querySelector('.upload-input').style.display = 'block';
+                    document.querySelector('.url-input').style.display = 'none';
+                    document.getElementById('uploadOption').checked = true;
+                }).catch(err => {
+                    console.error('Error saving video to IndexedDB', err);
+                    alert('Error saving video.');
+                });
             }
         });
     </script>
