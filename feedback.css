@@ -1,7 +1,7 @@
 .feedback-page{
     min-height: 100vh;
     margin: 10px,0px,2px;
-    color: white,black;
+    color: black;
     background: white;
 
 }
@@ -43,13 +43,13 @@
     display: block;
     justify-content: left;
     text-align: left;
-    color: black salmon;
+    color: black ;
     padding: 20px;
     margin: 20px;
     font-size: 20px;
     border: 2px solid black;
     width: 600px;
- background-color: rgb(253, 216, 216);
+ background-color: white;
     height: 900px;
 }
 .form-group{

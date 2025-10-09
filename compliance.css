@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #cad1f1 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #cad1f1 0%, #e5dcee 100%);
     min-height: 100vh;
     color: #333;
     padding-top: 60px; /* For fixed navbar */
@@ -16,59 +16,6 @@ body {
     border: 3px solid black;
 }
 
-/* Navbar styles */
-.navbar {
-    background-color: #333;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-item {
-    margin-left: 20px;
-}
-
-.navbar-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-link:hover {
-    background-color: #555;
-    border-radius: 5px;
-}
-
-.navbar-link.active {
-    background-color: #667eea;
-    border-radius: 5px;
-}
 
 
 
@@ -129,7 +76,7 @@ body {
     flex-wrap: wrap;
 }
 #complaintsList{
-    background-color: rgb(236, 213, 213);
+    background-color: rgb(250, 248, 248);
     width: 1000px;
     
 }
@@ -189,7 +136,7 @@ body {
 }
 
 .action-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #e0dee2 100%);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -208,7 +155,7 @@ body {
 
 /* Compliance container for separate pages */
 .compliance-container {
-   background-color: wheat;
+   background-color: white;
     padding:20px;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);

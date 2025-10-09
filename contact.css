@@ -2,7 +2,7 @@
 
 .admin-page {
     font-family: Arial, sans-serif;
-  background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white);
+  background:linear-gradient(55deg, white);
     color: black;
     margin: 0;
     padding: 0;
@@ -20,58 +20,14 @@
     font-size: 2.5em;
 }
 
-.navbar {
-    background-color: #2980b9;
-    padding: 10px 0;
-}
 
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar-brand {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.navbar-item {
-    margin-left: 20px;
-}
-
-.navbar-link {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-link:hover,
-.navbar-link.active {
-    background-color: #e74c3c;
-    border-radius: 5px;
-}
 
 .admin-main {
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
 }
 
 .admin-main h1 {

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: wheat;
+    background-color: rgb(250, 249, 248);
     color:white;
     padding: 20px;
     font-family: 'Arial', sans-serif;
