@@ -8,20 +8,21 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f5f5f7 0%, #eeedf0 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
+  
 }
 
 .class {
-    background: rgb(228, 209, 209);background:linear-gradient(55deg, #667eea, #764ba2,red, orange, yellow, green, blue, indigo, violet,black,white); padding: 50px;
-    border-radius: 10px;
+background-color: white;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 1000px;
     font-size: 20px;
+      border-radius: 20px;
 }
 
 h1 {
@@ -44,7 +45,7 @@ h1 {
 }
 
 .unenroll-btn {
-    background-color: #e74c3c;
+    background-color: #2601fc;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -55,7 +56,7 @@ h1 {
 }
 
 .unenroll-btn:hover {
-    background-color: #c0392b;
+    background-color: #f80606;
 }
 
 p {
@@ -63,56 +64,15 @@ p {
     font-size: 1.2em;
     color: #555;
 }
-.navbar {
-    background-color: #333;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+button{
+    background-color: #f7d4d4;
+    margin: 30px;
+    height: 35px;
+    width: 100px;
+    border-radius: 10px;
 }
-
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
+button:hover{
+    background-color: #3a06f8;
+    transition :background-color 0.4s ease;
+    color: white;
 }
-
-.navbar-brand {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-item {
-    margin-left: 20px;
-}
-
-.navbar-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-link:hover {
-    background-color: #555;
-    border-radius: 5px;
-}
-
-.navbar-link.active {
-    background-color: #667eea;
-    border-radius: 5px;
-}
-
