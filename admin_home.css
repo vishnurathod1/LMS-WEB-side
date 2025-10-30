@@ -6,23 +6,23 @@
     margin: 0;
     padding: 0;
     background-color: #2c2929;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Admin header */
 .admin-header {
-    background-color: #333;
     color: white;
     text-align: center;
 }
 
 .navbar {
-    background-color:   #8fc6eb;
-  
-    color: black;
+background-color: #007bff;
+color: black;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    height: 60px;
 }
 
 .navbar-container {
@@ -31,14 +31,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0px;
+    flex-wrap: wrap;
 }
 
 .navbar-brand {
     color: #fff;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
+    margin-right: 20px;
 }
 
 .navbar-menu {
@@ -46,17 +48,18 @@
     display: flex;
     margin: 0;
     padding: 0;
+    flex-wrap: wrap;
 }
 
 .navbar-item {
-    margin-left: 30px;
+    margin-left: 10px;
     justify-content: space-between;
 }
 
 .navbar-link {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 5px 10px;
     transition: background-color 0.3s ease;
     justify-content: space-between;
     display: flex;
@@ -90,8 +93,9 @@
 
 /* Admin main content */
 .admin-main {
-    width: 70px;
-    margin: 0 ;
+    width: 100%;
+    margin: 0;
+    margin-top: 50px; /* Account for fixed navbar height */
 }
 
 .admin-main h1 {
@@ -116,12 +120,16 @@
 .category-section {
     background-color: rgb(233, 211, 211);
     width:190px;
-    height:800px;
+    height: calc(100vh - 50px);
     padding:25px;
     border-radius:8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     gap: 30px;
     border: 2px solid black;
+    position: fixed;
+    left: 0;
+    top: 50px; /* Below navbar */
+    overflow-y: auto;
 }
 
 .category-section h3 {
@@ -209,7 +217,8 @@
     justify-content: center;
     text-align: center;
     height: 60px;
-    width: 1450px;
+    width: calc(100% - 240px);
+    max-width: 1450px;
 }
 
 #featureContent {
@@ -217,7 +226,8 @@
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
-
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 #featureContent h3 {
@@ -236,22 +246,49 @@
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
+        height: auto;
     }
-    
+
     .navbar-menu {
         flex-direction: column;
         margin-top: 10px;
     }
-    
+
     .navbar-item {
         margin: 5px 0;
     }
-    
+
     .admin-main {
         padding: 10px;
+        margin-top: 70px; /* Adjust for taller navbar on mobile */
     }
-    
+
     .category-section {
         padding: 15px;
+        width: 100%;
+        position: static;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .content-display {
+        padding-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .featuresList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .featuresList li {
+        width: 45%;
+        margin: 5px;
+    }
+
+    #searchInput {
+        width: 200px;
     }
 }
