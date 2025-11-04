@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Profile</title>
+    <title>Trainer Profile</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -56,15 +56,15 @@
     <div class="profile-container">
         <div class="profile-header">
             <i class="fa fa-user-circle"></i>
-            <h1>Admin Profile</h1>
+            <h1>Trainer Profile</h1>
         </div>
         <div class="profile-details">
-            <p><strong>Name:</strong> <span id="profileName">Admin User</span></p>
-            <p><strong>Email:</strong> <span id="profileEmail">admin@example.com</span></p>
-            <p><strong>Role:</strong> <span id="profileRole">Administrator</span></p>
-            <p><strong>Member since:</strong> <span id="profileMemberSince">January 2023</span></p>
+            <p><strong>Name:</strong> <span id="profileName">Trainer User</span></p>
+            <p><strong>Email:</strong> <span id="profileEmail">trainer@example.com</span></p>
+            <p><strong>Role:</strong> <span id="profileRole">Instructor</span></p>
+            <p><strong>Member since:</strong> <span id="profileMemberSince">January 2025</span></p>
         </div>
-        
+        <a href="trainer_home.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Dashboard</a>
     </div>
 
     <script>
@@ -72,10 +72,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             if (currentUser) {
-                document.getElementById('profileName').textContent = currentUser.name || 'Admin User';
-                document.getElementById('profileEmail').textContent = currentUser.email || 'admin@example.com';
-                document.getElementById('profileRole').textContent = currentUser.role || 'Administrator';
-                document.getElementById('profileMemberSince').textContent = currentUser.memberSince || 'January 2023';
+                document.getElementById('profileName').textContent = currentUser.name || 'Trainer User';
+                document.getElementById('profileEmail').textContent = currentUser.email || 'trainer@example.com';
+                document.getElementById('profileRole').textContent = currentUser.role || 'Instructor';
+                document.getElementById('profileMemberSince').textContent = currentUser.memberSince || 'January 2025';
             }
         });
     </script>

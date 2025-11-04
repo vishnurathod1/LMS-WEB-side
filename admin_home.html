@@ -25,7 +25,7 @@
                 <li class="navbar-item"><a href="trainer_home.html" class="navbar-link"><i class="fa fa-chalkboard-teacher"></i> Trainer</a></li>
                 <li class="navbar-item"><a href="login.html" class="navbar-link"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
                 <li class="navbar-item"><a href="security_settings.html" class="navbar-link"><i class="fa fa-shield-alt"></i> Settings</a></li>
-                <li class="navbar-item"><a href="admin_profile.html" class="navbar-link"><i class="fa fa-user-circle"></i>Admin</a></li>
+                <li class="navbar-item profile-display" id="profileDisplay" style="display: none;"><a href="admin_profile.html" class="navbar-link"><i class="fa fa-user-circle"></i> <span id="userName"></span> (<span id="userRole"></span>)</a></li>
                 <li class="navbar-item"><a href="notifications.html" class="notification-icon"><i class="fa fa-bell"></i></a></li>
         </div>
      </nav>`
@@ -41,6 +41,9 @@
         </section>
            
             <div class="category-section">
+                <div class="sidebar-profile" id="sidebarProfile" style="display: none; padding: 10px; border-bottom: 1px solid #007bff; margin-bottom: 15px;">
+                    <i class="fa fa-user-circle"></i> <span id="sidebarUserName"></span> (<span id="sidebarUserRole"></span>)
+                </div>
                 <h3><i class="fa fa-cogs"></i> Admin Dashboard</h3s>
                 <ul class="featuresList">
                    
@@ -129,10 +132,31 @@
                         window.location.href = 'admin_profile.html';
                     });
                 }
+
+                // Display user profile if logged in
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                if (currentUser) {
+                    const userName = document.getElementById('userName');
+                    const userRole = document.getElementById('userRole');
+                    userName.textContent = currentUser.name;
+                    userRole.textContent = currentUser.role;
+
+                    // Show profile display in navbar
+                    const profileDisplay = document.getElementById('profileDisplay');
+                    profileDisplay.style.display = 'block';
+
+                    // Also display in sidebar
+                    const sidebarProfile = document.getElementById('sidebarProfile');
+                    const sidebarUserName = document.getElementById('sidebarUserName');
+                    const sidebarUserRole = document.getElementById('sidebarUserRole');
+                    sidebarUserName.textContent = currentUser.name;
+                    sidebarUserRole.textContent = currentUser.role;
+                    sidebarProfile.style.display = 'block';
+                }
             });
         </script>
       </main>
    <script src="mode.js" ></script>  
 </body>
-</html>
+<x/html>
  

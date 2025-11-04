@@ -137,10 +137,18 @@
 
         if (!existingUser) {
             // Add new user automatically
+            let role;
+            if (userType === 'admin') {
+                role = 'Administrator';
+            } else if (userType === 'trainer') {
+                role = 'Trainer';
+            } else if (userType === 'trainee') {
+                role = 'Student';
+            }
             const newUser = {
                 name,
                 email,
-                role: capitalizeFirstLetter(userType),
+                role: role,
                 subject: subject,
                 status: 'Active'
             };

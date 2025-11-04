@@ -30,6 +30,11 @@
               ><i class="fas fa-graduation-cap"></i> Student</a
             >
           </li>
+          <li class="navbar-item profile-display" id="profileDisplay" style="display: none;">
+            <a href="student_profile.html" class="navbar-link"
+              ><i class="fas fa-user-circle"></i> <span id="userName"></span> (<span id="userRole"></span>)</a
+            >
+          </li>
           <li class="navbar-item">
             <a href="login.html" class="navbar-link"
               ><i class="fas fa-sign-out-alt"></i> Logout</a
@@ -161,6 +166,19 @@
             loadFeatureContent(title, url);
           });
         });
+      }
+
+      // Display user profile if logged in
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        const userName = document.getElementById('userName');
+        const userRole = document.getElementById('userRole');
+        userName.textContent = currentUser.name;
+        userRole.textContent = currentUser.role;
+
+        // Show profile display in navbar
+        const profileDisplay = document.getElementById('profileDisplay');
+        profileDisplay.style.display = 'block';
       }
     });
   </script>
