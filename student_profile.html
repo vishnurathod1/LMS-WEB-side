@@ -61,10 +61,10 @@
         <div class="profile-details">
             <p><strong>Name:</strong> <span id="profileName">Student User</span></p>
             <p><strong>Email:</strong> <span id="profileEmail">student@example.com</span></p>
-            <p><strong>Role:</strong> <span id="profileRole">Trainee</span></p>
+            <p><strong>Role:</strong> <span id="profile">Student</span></p>
             <p><strong>Member since:</strong> <span id="profileMemberSince">January 2023</span></p>
         </div>
-        <a href="student_home.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Dashboard</a>
+        
     </div>
 
     <script>
@@ -74,8 +74,8 @@
             if (currentUser) {
                 document.getElementById('profileName').textContent = currentUser.name || 'Student User';
                 document.getElementById('profileEmail').textContent = currentUser.email || 'student@example.com';
-                document.getElementById('profileRole').textContent = currentUser.role || 'Trainee';
-                document.getElementById('profileMemberSince').textContent = currentUser.memberSince || 'January 2023';
+                document.getElementById('profileRole').textContent = currentUser.role || 'Student';
+                document.getElementById('profileMemberSince').textContent = currentUser.memberSince || 'January 2025';
             }
         });
     </script>
